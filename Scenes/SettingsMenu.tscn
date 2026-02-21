@@ -29,10 +29,9 @@ grow_vertical = 2
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
 theme = ExtResource("1_8uw7q")
-current_tab = 1
+current_tab = 0
 
 [node name="Game Settings" type="VBoxContainer" parent="MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -41,10 +40,8 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Highlight house when cell is selected"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/TabContainer/Game Settings"]
-layout_mode = 2
-
 [node name="Board Settings" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

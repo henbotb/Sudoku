@@ -78,15 +78,15 @@ func highlight_similar() -> void:
 	selected_cell.theme = SELECTED
 	
 	# house
-	if config.get_value("board_settings", "highlight_houses") or 1:
+	if config.get_value("board_settings", "highlight_houses"):
 		highlight_house(selected_cell.get_parent())
 	
 	# row / column
-	if config.get_value("board_settings", "highlight_orthogonal") or 1:
+	if config.get_value("board_settings", "highlight_orthogonal"):
 		highlight_orthogonal(selected_cell.get_parent().get_index(), selected_cell.get_index())
 	
 	# same number
-	if config.get_value("board_settings", "highlight_same_value") or 1:
+	if config.get_value("board_settings", "highlight_same_value"):
 		highlight_same_value(int(selected_cell.text))
 	
 	# candidates
@@ -140,9 +140,9 @@ func cell_pressed(big_ndx: int, small_ndx: int, cell: Button) -> void:
 	selected_cell = cell
 	highlight_similar()
 	
-	print("Big index: %d Small index: %d Value: %s" % [big_ndx, small_ndx, cell.text])
+func update():
+	if config.load("user://game_settings.cfg") != OK:
+		printerr("User didn't have a game_settings file")
 	
-func get_cell_location() -> String:
-	return ("B: %d, S: %d" % [get_global_mouse_position().x, get_global_mouse_position().y])
 
 	
