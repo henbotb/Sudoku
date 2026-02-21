@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6qpnuygpq6wf"]
+
+[ext_resource type="Theme" uid="uid://c6pxp4m17rhm" path="res://Themes/Settings.tres" id="1_8uw7q"]
+[ext_resource type="Script" uid="uid://c07ve34vi8rsv" path="res://Scenes/settings_menu.gd" id="1_bxjf0"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 234.0
+offset_top = 51.0
+offset_right = -234.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_bxjf0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_8uw7q")
+current_tab = 1
+
+[node name="Game Settings" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Game Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Highlight house when cell is selected"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/TabContainer/Game Settings"]
+layout_mode = 2
+
+[node name="Board Settings" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
+layout_mode = 2
+button_pressed = true
+text = "Highlight house when cell is selected"
+
+[node name="CheckBox2" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
+layout_mode = 2
+button_pressed = true
+text = "Highlight row / column when cell is selected"
+
+[node name="CheckBox3" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
+layout_mode = 2
+button_pressed = true
+text = "Highlight other cells with the same value when cell is selected"
+
+[node name="CheckBox4" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
+layout_mode = 2
+button_pressed = true
+text = "Highlight candidate values with the same value in cells when cell is selected"
+
+[node name="Control" type="HBoxContainer" parent="MarginContainer/TabContainer/Board Settings"]
+layout_mode = 2
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/TabContainer/Board Settings/Control"]
+custom_minimum_size = Vector2(46.805, 0)
+layout_mode = 2
+theme = ExtResource("1_8uw7q")
+color = Color(1, 0.38395518, 0.27377793, 1)
+edit_alpha = false
+edit_intensity = false
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Board Settings/Control"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Set Highlight Color"

@@ -1,0 +1,194 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3j1twvcbn8o4"]
+
+[ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/Default.tres" id="1_bd7fu"]
+
+[node name="SudokuManualGrid" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 234.0
+offset_top = 3.0
+offset_right = -278.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="GridContainer2" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_bd7fu")
+autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="GridContainer/GridContainer2/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "1"
+
+[node name="MarginContainer2" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "1"
+
+[node name="MarginContainer3" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "1"
+
+[node name="MarginContainer4" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "1"
+
+[node name="MarginContainer5" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "1"
+
+[node name="MarginContainer6" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "1"
+
+[node name="MarginContainer7" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer7"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "1"
+
+[node name="MarginContainer8" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer8"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "1"
+
+[node name="MarginContainer9" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer9"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "1"
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+layout_mode = 0
+offset_left = 167.0
+offset_right = 465.0
+offset_bottom = 607.0
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
