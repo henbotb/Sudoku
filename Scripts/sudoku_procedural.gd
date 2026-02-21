@@ -1,10 +1,10 @@
 extends GridContainer
 
-const BOARD_COLS = 9
-const BOARD_ROWS = 9
+const BOARD_COLS = 16
+const BOARD_ROWS = 16
 
-const BIG_COLS = 3
-const BIG_ROWS = 3
+const BIG_COLS = 4
+const BIG_ROWS = 4
 
 @warning_ignore("integer_division")
 const HOUSE_COLS = BOARD_COLS / BIG_COLS
@@ -16,6 +16,7 @@ var DEFAULT = preload("uid://dqqaua4my3ejj")
 
 var config = ConfigFile.new()
 var selected_cell: Button
+var rng = RandomNumberGenerator.new()
 
 @onready var puzzle: GridContainer = $"."
 
@@ -23,7 +24,8 @@ var selected_cell: Button
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready() -> void:	
+	print(int("13%s" % "f"))
 	if config.load("user://game_settings.cfg") != OK:
 		printerr("User didn't have a game_settings file")
 	
@@ -54,12 +56,15 @@ func create_board() -> Error:
 		for cell_ndx in range(HOUSE_COLS * HOUSE_ROWS):
 			# setup button
 			var btn = Button.new()
-			btn.text = "%d" % (cell_ndx + 1)
+			if rng.randf() < 0.5:
+				btn.text = "%d" % rng.randi_range(1, HOUSE_COLS * HOUSE_ROWS)
+			else:
+				btn.text = ""
 			btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
 			
 			# connect to function for recognition
-			btn.button_up.connect(cell_pressed.bind(house_ndx, cell_ndx, btn))
+			btn.button_up.connect(cell_pressed.bind(btn))
 			
 			# add to house
 			house.add_child(btn)
@@ -87,7 +92,7 @@ func highlight_similar() -> void:
 	
 	# same number
 	if config.get_value("board_settings", "highlight_same_value"):
-		highlight_same_value(int(selected_cell.text))
+		highlight_same_value(selected_cell.text)
 	
 	# candidates
 	#if config.get_value("board_settings", "highlight_candidates"):
@@ -117,12 +122,12 @@ func highlight_orthogonal(big_ndx: int, small_ndx: int) -> void:
 		cell.theme = SELECTED
 	
 	
-func highlight_same_value(cell_number: int) -> void:
+func highlight_same_value(cell_number: String) -> void:
 	var houses: Array[Node] = puzzle.get_children()
 	for house in houses:
 		var cells: Array[Node] = house.get_children()
 		for cell in cells:
-			if(int(cell.text) == cell_number):
+			if(cell.text == cell_number):
 				cell.theme = SELECTED
 
 # TODO: 
@@ -136,13 +141,64 @@ func reset_highlights() -> void:
 		for cell in cells:
 			cell.theme = DEFAULT
 
-func cell_pressed(big_ndx: int, small_ndx: int, cell: Button) -> void:
+func cell_pressed(cell: Button) -> void:
+	# TODO: highlighting options for non-valued cells
+	
 	selected_cell = cell
 	highlight_similar()
 	
 func update():
 	if config.load("user://game_settings.cfg") != OK:
 		printerr("User didn't have a game_settings file")
+
+# TODO: Cell datatype
+# properties: value, is_permanent, display_mode,
+# methods: 
+
+
+			
+func _input(event):
+	
+	# TODO: Rework this entire thing at somepoint, likely with a refactor to cells
+	if event is InputEventKey and event.is_pressed():
+		if selected_cell == null:
+			return
+			
+		var cell_input = char(event.unicode)
+		
+		if event.keycode == KEY_DELETE:
+			selected_cell.text = ""
+			return
+		elif event.keycode == KEY_BACKSPACE:
+			selected_cell.text = selected_cell.text.substr(0, selected_cell.text.length() - 1)
+			return
+		
+
+		
+		
+		if config.get_value("board_settings", "double_digit_numbers"):
+			
+			if not cell_input.is_valid_int():
+				return
+					
+			if (
+				0 < int(selected_cell.text + cell_input)
+				and int(selected_cell.text + cell_input) <= HOUSE_ROWS * HOUSE_COLS
+			):
+				selected_cell.text += str(cell_input)
+		else:
+			if (
+				(
+					0 < int(cell_input)
+					and int(cell_input) < 10
+				)
+				or
+				(
+					9 < event.unicode - 87
+					and event.unicode - 87 <= HOUSE_ROWS * HOUSE_COLS
+				)
+			):
+				selected_cell.text = cell_input
 	
 
 	

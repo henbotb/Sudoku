@@ -16,7 +16,7 @@ func _input(ev):
 	if Input.is_action_just_pressed("Settings"):
 		color_rect.visible = not settings_currently_displayed
 		settings_menu.visible = not settings_currently_displayed
-		puzzle.set_process_input(not settings_currently_displayed)
+		puzzle.set_block_signals(not settings_currently_displayed)	
 		settings_currently_displayed = not settings_currently_displayed
 		
 		settings_menu.save_settings()
