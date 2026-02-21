@@ -18,20 +18,27 @@ var config = ConfigFile.new()
 var selected_cell: Button
 var rng = RandomNumberGenerator.new()
 
-@onready var puzzle: GridContainer = $"."
+var remembered_display_type
 
+@onready var puzzle: GridContainer = $"."
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	print(int("13%s" % "f"))
+	print(convert_char_to_digit('a'))
+	print(convert_digit_to_char('12'))
+	
 	if config.load("user://game_settings.cfg") != OK:
 		printerr("User didn't have a game_settings file")
 	
+	remembered_display_type = config.get_value("board_settings", "double_digit_numbers")
+
 	if create_board() != OK:
 		printerr("Board/Inner Rows/Cols initialized to non-divisible value")
 		
+	if remembered_display_type != true:
+		change_board_display_type(true)
 	#SELECTED.default_font_size = 10
 		
 
@@ -127,7 +134,7 @@ func highlight_same_value(cell_number: String) -> void:
 	for house in houses:
 		var cells: Array[Node] = house.get_children()
 		for cell in cells:
-			if(cell.text == cell_number):
+			if cell.text == cell_number:
 				cell.theme = SELECTED
 
 # TODO: 
@@ -150,13 +157,48 @@ func cell_pressed(cell: Button) -> void:
 func update():
 	if config.load("user://game_settings.cfg") != OK:
 		printerr("User didn't have a game_settings file")
+		
+	if remembered_display_type != config.get_value("board_settings", "double_digit_numbers"):
+		if remembered_display_type:
+			change_board_display_type(true)
+			remembered_display_type = false
+		else:
+			change_board_display_type(false)
+			remembered_display_type = true
+			
 
 # TODO: Cell datatype
 # properties: value, is_permanent, display_mode,
 # methods: 
 
+func convert_value_type_toggle(input: String) -> String:	
+	if input.is_valid_int(): # int -> char
+		return char(int(input) + 87)
+	return str(ord(input) - 87)
+	
+func convert_digit_to_char(input: String) -> String:
+	if 0 < int(input) and int(input) < 10:
+		return input
+	return char(int(input) + 87)
+	
+func convert_char_to_digit(input: String) -> String:
+	if 0 < int(input) and int(input) < 10:
+		return input
+	return str(ord(input) - 87)
 
+func change_board_display_type(from_double_digit: bool):
+	var houses: Array[Node] = puzzle.get_children()
+	for house in houses:
+		var cells: Array[Node] = house.get_children()
+		for cell in cells:
+			if cell.text == "":
+				continue
 			
+			if from_double_digit:
+				cell.text = convert_digit_to_char(cell.text)
+			else:
+				cell.text = convert_char_to_digit(cell.text)
+
 func _input(event):
 	
 	# TODO: Rework this entire thing at somepoint, likely with a refactor to cells
