@@ -15,6 +15,10 @@ run/main_scene="uid://crki050dtr1sx"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
+[autoload]
+
+Settings="*res://Scripts/settings.gd"
+
 [input]
 
 settings={

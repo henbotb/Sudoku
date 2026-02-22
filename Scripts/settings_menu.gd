@@ -1,7 +1,9 @@
 extends Control
 
-var config = ConfigFile.new()
+# TODO: Eventually migrate this whole system to something with autoload singletons in project settings
+
 var SELECTED: Theme = preload("uid://be5h05f4havy0")
+var config = Settings.config
 
 @onready var color_picker_button: ColorPickerButton = $"MarginContainer/TabContainer/Board Settings/Control/ColorPickerButton"
 @onready var board_settings: VBoxContainer = $"MarginContainer/TabContainer/Board Settings"
@@ -21,21 +23,12 @@ func stylize_color_picker():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# TODO: delete these lines, resets config for testing purpose
-	var dir = DirAccess.open("user://")
-	dir.remove("game_settings.cfg")
-	
-	stylize_color_picker()
-	
-	load_settings()
-	save_settings()
 
+	load_settings()
+	stylize_color_picker()
 	pass # Replace with function body.
 
 func load_settings():
-	
-	if config.load("user://game_settings.cfg") != OK:
-		save_settings()
 	
 	highlight_houses.button_pressed = config.get_value("board_settings", "highlight_houses")
 	highlight_orthogonal.button_pressed = config.get_value("board_settings", "highlight_orthogonal")
@@ -52,10 +45,8 @@ func save_settings():
 	config.set_value("board_settings", "highlight_candidates", highlight_candidates.button_pressed)
 	config.set_value("board_settings", "highlight_color", color_picker_button.color)
 	config.set_value("board_settings", "display_mode", display_mode.selected)
-	config.save("user://game_settings.cfg")
-	
-func update_game_settings():
+	Settings.save()
 
-	# TODO: convert double_digit_numbers to characters values / vice versa
-	SELECTED.get_stylebox('normal', 'Button').bg_color = config.get_value("board_settings", "highlight_color")
+func update_game_settings():
+	SELECTED.get_stylebox("normal", "Button").bg_color = config.get_value("board_settings", "highlight_color")
 	

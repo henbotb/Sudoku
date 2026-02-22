@@ -1,16 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3j1twvcbn8o4"]
+[gd_scene load_steps=6 format=3 uid="uid://b3j1twvcbn8o4"]
 
 [ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/default.tres" id="1_kdip4"]
+
+[sub_resource type="Theme" id="Theme_kdip4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdip4"]
+bg_color = Color(0.99999994, 0.2352407, 0.6767275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufesn"]
+bg_color = Color(0.24761775, 0.6115468, 0.98667127, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="Theme" id="Theme_wfm3x"]
+GridContainer/styles/normal = SubResource("StyleBoxFlat_kdip4")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ufesn")
 
 [node name="SudokuManualGrid" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 234.0
-offset_top = 3.0
-offset_right = -278.0
-offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -21,6 +33,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 256.0
+offset_top = 4.0
+offset_right = -256.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
@@ -29,6 +45,7 @@ columns = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = SubResource("Theme_kdip4")
 columns = 3
 
 [node name="Button" type="Button" parent="GridContainer/GridContainer2"]
@@ -36,159 +53,694 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_kdip4")
+text = "1"
 autowrap_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="GridContainer/GridContainer2/Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Button2" type="Button" parent="GridContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="GridContainer3" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 columns = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme = ExtResource("1_kdip4")
 text = "1"
+autowrap_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme = ExtResource("1_kdip4")
 text = "1"
+autowrap_mode = 2
 
-[node name="MarginContainer3" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer3"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme = ExtResource("1_kdip4")
 text = "1"
+autowrap_mode = 2
 
-[node name="MarginContainer4" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer4"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme = ExtResource("1_kdip4")
 text = "1"
+autowrap_mode = 2
 
-[node name="MarginContainer5" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer5"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme = ExtResource("1_kdip4")
 text = "1"
+autowrap_mode = 2
 
-[node name="MarginContainer6" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer6"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme = ExtResource("1_kdip4")
 text = "1"
+autowrap_mode = 2
 
-[node name="MarginContainer7" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer7"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme = ExtResource("1_kdip4")
 text = "1"
+autowrap_mode = 2
 
-[node name="MarginContainer8" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer8"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme = ExtResource("1_kdip4")
 text = "1"
+autowrap_mode = 2
 
-[node name="MarginContainer9" type="MarginContainer" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer/MarginContainer9"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme = ExtResource("1_kdip4")
 text = "1"
+autowrap_mode = 2
 
-[node name="ColorPicker" type="ColorPicker" parent="."]
-layout_mode = 0
-offset_left = 167.0
-offset_right = 465.0
-offset_bottom = 607.0
-sampler_visible = false
-color_modes_visible = false
-sliders_visible = false
-hex_visible = false
-presets_visible = false
+[node name="GridContainer4" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer/GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="GridContainer/GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer/GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer/GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer/GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer/GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer/GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer/GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer/GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="GridContainer5" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer/GridContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="GridContainer/GridContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer/GridContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer/GridContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer/GridContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer/GridContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer/GridContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer/GridContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer/GridContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="GridContainer6" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer/GridContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="GridContainer/GridContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer/GridContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer/GridContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer/GridContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer/GridContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer/GridContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer/GridContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer/GridContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="GridContainer7" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer/GridContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="GridContainer/GridContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer/GridContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer/GridContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer/GridContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer/GridContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer/GridContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer/GridContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer/GridContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="GridContainer8" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer/GridContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="GridContainer/GridContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer/GridContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer/GridContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer/GridContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer/GridContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer/GridContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer/GridContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer/GridContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="GridContainer9" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer/GridContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="GridContainer/GridContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer/GridContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer/GridContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer/GridContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer/GridContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer/GridContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer/GridContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer/GridContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="GridContainer10" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_wfm3x")
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer/GridContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="GridContainer/GridContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer/GridContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button4" type="Button" parent="GridContainer/GridContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button5" type="Button" parent="GridContainer/GridContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button6" type="Button" parent="GridContainer/GridContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button7" type="Button" parent="GridContainer/GridContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button8" type="Button" parent="GridContainer/GridContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2
+
+[node name="Button9" type="Button" parent="GridContainer/GridContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kdip4")
+text = "1"
+autowrap_mode = 2

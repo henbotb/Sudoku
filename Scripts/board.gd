@@ -17,15 +17,14 @@ const HOUSE_SIZE = HOUSE_COLS * HOUSE_ROWS
 
 var display_mode: DisplayMode
 var selected_cell: Cell = null
-var config = ConfigFile.new()
+var config = Settings.config
 var rng = RandomNumberGenerator.new()
 
 # INITIALIZATION STUFF
 
 func _ready() -> void:
 
-	if config.load("user://game_settings.cfg") != OK:
-		printerr("User didn't have a game_settings file")
+
 		
 	if initialize_board() != OK:
 		printerr("Board didn't initialize correctly")
@@ -161,8 +160,7 @@ func _input(event):
 		render_cell(selected_cell)
 			
 		#if KEY_A < event.keycode and event.keycode < KEY_A + HOUSE_SIZE - 9: # 1 - 
-			
-	
+
 # HELPER FUNCTION STUFF
 
 func render_cell(cell: Cell):
@@ -202,11 +200,8 @@ func convert_value_to_char(value: int) -> String:
 	# 87 is lower case, 55 is upper case
 	
 func update_settings():
-	if config.load("user://game_settings.cfg") != OK:
-		printerr("Couldn't update user settings")
 	
 	var display_mode_new = config.get_value("board_settings", "display_mode")
 	if display_mode != display_mode_new:
-		print("Changing mode from %d to %d" % [display_mode, display_mode_new])
 		display_mode = display_mode_new
 		render_board()
