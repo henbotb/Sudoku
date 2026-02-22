@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6qpnuygpq6wf"]
 
-[ext_resource type="Theme" uid="uid://c6pxp4m17rhm" path="res://Themes/Settings.tres" id="1_8uw7q"]
-[ext_resource type="Script" uid="uid://c07ve34vi8rsv" path="res://Scenes/settings_menu.gd" id="1_bxjf0"]
+[ext_resource type="Theme" uid="uid://c6pxp4m17rhm" path="res://Themes/settings.tres" id="1_8uw7q"]
+[ext_resource type="Script" uid="uid://c07ve34vi8rsv" path="res://Scripts/settings_menu.gd" id="1_bxjf0"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -45,6 +45,16 @@ text = "Highlight house when cell is selected"
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Board Settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Highlight Settings"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/TabContainer/Board Settings"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Hightlight when empty cells selected"
+
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
 layout_mode = 2
 button_pressed = true
@@ -82,7 +92,30 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Set Highlight Color"
 
-[node name="CheckBox5" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Board Settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Cell Settings"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Board Settings"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/TabContainer/Board Settings/HBoxContainer"]
+layout_mode = 2
+text = "Display type for board sizes greater than 9"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/TabContainer/Board Settings/HBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Alphabetic"
+popup/item_0/id = 0
+popup/item_1/text = "Multi-digit"
+popup/item_1/id = 2
+popup/item_2/text = "Hexadecimal"
+popup/item_2/id = 1
+
+[node name="CheckBox6" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
 layout_mode = 2
 button_pressed = true
-text = "Use double digit numbers instead of characters when house size is greater than 9"
+text = "Double click to edit cell value"

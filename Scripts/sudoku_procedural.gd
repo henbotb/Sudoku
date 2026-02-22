@@ -26,9 +26,6 @@ var remembered_display_type
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	print(convert_char_to_digit('a'))
-	print(convert_digit_to_char('12'))
-	
 	if config.load("user://game_settings.cfg") != OK:
 		printerr("User didn't have a game_settings file")
 	
@@ -165,7 +162,7 @@ func update():
 		else:
 			change_board_display_type(false)
 			remembered_display_type = true
-			
+
 
 # TODO: Cell datatype
 # properties: value, is_permanent, display_mode,

@@ -2,8 +2,7 @@ extends Control
 
 var settings_currently_displayed = false
 
-@onready var puzzle: GridContainer = $Puzzle
-@onready var label: Label = $Label
+@onready var board: Board = $Board
 @onready var settings_menu: Control = $SettingsMenu
 @onready var color_rect: ColorRect = $ColorRect
 
@@ -16,9 +15,8 @@ func _input(ev):
 	if Input.is_action_just_pressed("Settings"):
 		color_rect.visible = not settings_currently_displayed
 		settings_menu.visible = not settings_currently_displayed
-		puzzle.set_block_signals(not settings_currently_displayed)	
+		board.set_block_signals(not settings_currently_displayed)	
 		settings_currently_displayed = not settings_currently_displayed
 		
 		settings_menu.save_settings()
 		settings_menu.update_game_settings()
-		puzzle.update()

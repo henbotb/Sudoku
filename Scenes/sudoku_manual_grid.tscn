@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3j1twvcbn8o4"]
 
-[ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/Default.tres" id="1_bd7fu"]
+[ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/default.tres" id="1_kdip4"]
 
 [node name="SudokuManualGrid" type="Control"]
 layout_mode = 3
@@ -35,7 +35,7 @@ columns = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_bd7fu")
+theme = ExtResource("1_kdip4")
 autowrap_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="GridContainer/GridContainer2/Button"]
