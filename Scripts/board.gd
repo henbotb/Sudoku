@@ -2,17 +2,20 @@ extends GridContainer
 class_name Board
 
 enum DisplayMode {
-	DOUBLE_DIGIT,
 	ALPHABETIC,
+	DOUBLE_DIGIT,
 }
 
-const BOARD_COLS = 9
-const BOARD_ROWS = 9
-const BIG_COLS = 3
-const BIG_ROWS = 3
+const BOARD_COLS = 16
+const BOARD_ROWS = 16
+const BIG_COLS = 4
+const BIG_ROWS = 4
+const NUM_HOUSES = BIG_COLS * BIG_ROWS
 const HOUSE_COLS = BOARD_COLS / BIG_COLS
 const HOUSE_ROWS = BOARD_ROWS / BIG_ROWS
+const HOUSE_SIZE = HOUSE_COLS * HOUSE_ROWS
 
+var display_mode: DisplayMode
 var selected_cell: Cell = null
 var config = ConfigFile.new()
 var rng = RandomNumberGenerator.new()
@@ -20,12 +23,14 @@ var rng = RandomNumberGenerator.new()
 # INITIALIZATION STUFF
 
 func _ready() -> void:
+
 	if config.load("user://game_settings.cfg") != OK:
 		printerr("User didn't have a game_settings file")
 		
 	if initialize_board() != OK:
 		printerr("Board didn't initialize correctly")
 		
+	display_mode = config.get_value("board_settings", "display_mode")
 	render_board()
 		
 	
@@ -36,16 +41,16 @@ func initialize_board(board := []) -> Error:
 		
 	self.columns = BIG_COLS
 	
-	for house_ndx in range(BIG_COLS * BIG_ROWS):
+	for house_ndx in range(NUM_HOUSES):
 		# setup house
 		var house = GridContainer.new()
 		house.columns = HOUSE_COLS
 		house.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		house.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		
-		for cell_ndx in range(HOUSE_COLS * HOUSE_ROWS):
+		for cell_ndx in range(HOUSE_SIZE):
 			# setup button
-			var cell = Cell.new(house_ndx, cell_ndx, rng.randi_range(1, 9))
+			var cell = Cell.new(house_ndx, cell_ndx, rng.randi_range(1, HOUSE_SIZE))
 			
 			# connect to function for recognition
 			cell.button_up.connect(cell_pressed.bind(cell))
@@ -106,16 +111,69 @@ func highlight_same_value(value: int):
 # TODO: func render_board():
 
 func render_board():
-	var is_double_digit: bool = config.get_value("board_settings", "double_digit_numbers")
 	var cells: Array[Node] = get_tree().get_nodes_in_group("cell")
 
 	for cell in cells:
-		if is_double_digit:
-			cell.text = str(cell.value)
-		else:
-			cell.text = convert_value_to_char(cell.value)
+		render_cell(cell)
 
+func _input(event):
+
+	if event is InputEventKey and event.pressed:
+		if selected_cell == null:
+			return
+		
+		if selected_cell.is_locked:
+			return
+		
+		if event.is_action_pressed("delete"):
+			selected_cell.value = -1
+
+		if event.is_action_pressed("backspace"):
+			if selected_cell.value == -1:
+				return
+			
+			if display_mode == DisplayMode.ALPHABETIC:
+				selected_cell.value = -1
+			else:
+				if 0 < selected_cell.value and selected_cell.value < 10:
+					selected_cell.value = -1
+				else:
+					selected_cell.value = (selected_cell.value - (selected_cell.value % 10)) / 10
+					
+		if display_mode == DisplayMode.ALPHABETIC:
+			if KEY_1 <= event.keycode and event.keycode <= KEY_9:
+				selected_cell.value = event.keycode - KEY_0 # key 2 for offsetting it from landing on 0
+			
+			elif event.keycode in range(KEY_A, KEY_A - 9 + HOUSE_SIZE):
+				selected_cell.value = event.keycode - KEY_A + 10
+				
+		else:
+			if KEY_0 <= event.keycode and event.keycode <= KEY_9:
+				if selected_cell.value == -1 && event.keycode != KEY_0:
+					selected_cell.value = event.keycode - KEY_0
+					
+				elif (
+					0 < selected_cell.value * 10 + event.keycode - KEY_0
+					and selected_cell.value * 10 + event.keycode - KEY_0 <= HOUSE_SIZE
+				) :
+					selected_cell.value = selected_cell.value * 10 + event.keycode - KEY_0
+		
+		render_cell(selected_cell)
+			
+		#if KEY_A < event.keycode and event.keycode < KEY_A + HOUSE_SIZE - 9: # 1 - 
+			
+	
 # HELPER FUNCTION STUFF
+
+func render_cell(cell: Cell):
+	if cell.value == -1:
+		cell.text = ""
+		return
+	
+	if display_mode == DisplayMode.ALPHABETIC:
+		cell.text = convert_value_to_char(cell.value)
+	else:
+		cell.text = str(cell.value)
 
 func get_row(big_index: int, small_index: int) -> Array[Cell]:
 	var row: Array[Cell] = []
@@ -129,13 +187,26 @@ func get_row(big_index: int, small_index: int) -> Array[Cell]:
 func get_column(big_index: int, small_index: int) -> Array[Cell]:
 	var column: Array[Cell] = []
 	
-	for outer_ndx in range(big_index % BIG_COLS, BIG_ROWS * BIG_COLS, BIG_COLS):
-		for inner_ndx in range(small_index % HOUSE_COLS, HOUSE_ROWS * HOUSE_COLS, HOUSE_COLS):
+	for outer_ndx in range(big_index % BIG_COLS, NUM_HOUSES, BIG_COLS):
+		for inner_ndx in range(small_index % HOUSE_COLS, HOUSE_SIZE, HOUSE_COLS):
 			column.append(get_child(outer_ndx).get_child(inner_ndx))
 	
 	return column
 	
 func convert_value_to_char(value: int) -> String:
+	if value < 0:
+		return ""
 	if 0 < value and value < 10:
 		return str(value)
-	return char(value + 87)
+	return char(value + 55)
+	# 87 is lower case, 55 is upper case
+	
+func update_settings():
+	if config.load("user://game_settings.cfg") != OK:
+		printerr("Couldn't update user settings")
+	
+	var display_mode_new = config.get_value("board_settings", "display_mode")
+	if display_mode != display_mode_new:
+		print("Changing mode from %d to %d" % [display_mode, display_mode_new])
+		display_mode = display_mode_new
+		render_board()

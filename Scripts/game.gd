@@ -6,13 +6,8 @@ var settings_currently_displayed = false
 @onready var settings_menu: Control = $SettingsMenu
 @onready var color_rect: ColorRect = $ColorRect
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-	
 func _input(ev):
-	if Input.is_action_just_pressed("Settings"):
+	if Input.is_action_just_pressed("settings"):
 		color_rect.visible = not settings_currently_displayed
 		settings_menu.visible = not settings_currently_displayed
 		board.set_block_signals(not settings_currently_displayed)	
@@ -20,3 +15,4 @@ func _input(ev):
 		
 		settings_menu.save_settings()
 		settings_menu.update_game_settings()
+		board.update_settings()

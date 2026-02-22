@@ -107,13 +107,11 @@ text = "Display type for board sizes greater than 9"
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/TabContainer/Board Settings/HBoxContainer"]
 layout_mode = 2
 selected = 0
-item_count = 3
+item_count = 2
 popup/item_0/text = "Alphabetic"
 popup/item_0/id = 0
 popup/item_1/text = "Multi-digit"
 popup/item_1/id = 2
-popup/item_2/text = "Hexadecimal"
-popup/item_2/id = 1
 
 [node name="CheckBox6" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
 layout_mode = 2
