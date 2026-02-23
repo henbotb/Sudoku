@@ -24,8 +24,6 @@ var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 
-
-		
 	if initialize_board() != OK:
 		printerr("Board didn't initialize correctly")
 		
@@ -42,6 +40,7 @@ func initialize_board(board := []) -> Error:
 	
 	for house_ndx in range(NUM_HOUSES):
 		# setup house
+		# TODO: house borders / highlighting
 		var house = GridContainer.new()
 		house.columns = HOUSE_COLS
 		house.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -49,11 +48,13 @@ func initialize_board(board := []) -> Error:
 		
 		for cell_ndx in range(HOUSE_SIZE):
 			# setup button
-			var cell = Cell.new(house_ndx, cell_ndx, rng.randi_range(1, HOUSE_SIZE))
+			var cell = Cell.new(house_ndx, cell_ndx, rng.randi_range(1, HOUSE_SIZE) if rng.randf() > 0.5 else -1)
 			
 			# connect to function for recognition
 			cell.button_up.connect(cell_pressed.bind(cell))
 			
+			cell.initialize_candidates(BIG_COLS, HOUSE_SIZE)
+				
 			# add to house
 			house.add_child(cell)
 			
@@ -71,7 +72,10 @@ func cell_pressed(cell: Cell) -> void:
 func highlight():
 	reset_highlights()
 	
-	if selected_cell == null or selected_cell.value == -1:
+	if (
+		selected_cell == null 
+		or (selected_cell.value == -1 and not config.get_value("board_settings", "highlight_empty_cells"))
+	):
 		return
 		
 	selected_cell.highlight()
@@ -105,9 +109,9 @@ func highlight_orthogonal(big_index: int, small_index: int):
 		cell.highlight()
 	
 func highlight_same_value(value: int):
+	if(value == -1):
+		return
 	get_tree().call_group(str(value), "highlight")
-	
-# TODO: func render_board():
 
 func render_board():
 	var cells: Array[Node] = get_tree().get_nodes_in_group("cell")

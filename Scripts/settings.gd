@@ -1,7 +1,6 @@
 extends Node
 
 var config = ConfigFile.new()
-@onready var settings_menu: Control = $SettingsMenu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,10 +9,12 @@ func _ready() -> void:
 	dir.remove("game_settings.cfg")
 	
 	set_defaults()
+	save()
 	
 	if config.load("user://game_settings.cfg") != OK:
 		printerr("User didn't have a game_settings.cfg")
 		save()
+	save()
 
 func update_value():
 	pass
@@ -32,3 +33,4 @@ func set_defaults():
 	config.set_value("board_settings", "highlight_candidates", true)
 	config.set_value("board_settings", "highlight_color", Color.CADET_BLUE)
 	config.set_value("board_settings", "display_mode", 0)
+	config.set_value("board_settings", "highlight_empty_cells", true)
