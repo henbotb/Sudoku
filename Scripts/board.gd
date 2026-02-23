@@ -93,12 +93,14 @@ func highlight():
 	if config.get_value("board_settings", "highlight_same_value"):
 		highlight_same_value(selected_cell.value)
 	
-	# TODO: candidates
-	#if config.get_value("board_settings", "highlight_candidates"):
-		#highlight_candidates(int(cell.text))
+	if config.get_value("board_settings", "highlight_candidates"):
+		highlight_candidates(selected_cell.value)
 
 func reset_highlights():
 	get_tree().call_group("highlighted", "unhighlight")
+	for candidate: Label in get_tree().get_nodes_in_group("highlighted_candidates"):
+		candidate.remove_from_group("highlighted_candidates")
+		candidate.remove_theme_color_override("font_color")
 	
 func highlight_house(house: GridContainer):
 	for cell in house.get_children():
@@ -114,6 +116,16 @@ func highlight_same_value(value: int):
 		return
 	get_tree().call_group(str(value), "highlight")
 
+func highlight_candidates(value: int):
+	var candidates: Array[Node] = get_tree().get_nodes_in_group("candidate_%d" % value)
+	for c in candidates:
+		var candidate := c as Label
+		if candidate.text == "":
+			continue
+		candidate.add_theme_color_override("font_color", Settings.config.get_value("board_settings", "highlight_color"))
+		candidate.add_to_group("highlighted_candidates")
+		
+
 func render_board():
 	var cells: Array[Node] = get_tree().get_nodes_in_group("cell")
 
@@ -122,24 +134,22 @@ func render_board():
 
 func _input(event):
 
+	if event.is_action_pressed("toggle_candidate_marking"):
+		if GameState.marking_mode == GameState.MarkingMode.CELL_CANDIDATE:
+			GameState.marking_mode = GameState.MarkingMode.ADD
+		else:
+			GameState.marking_mode = GameState.MarkingMode.CELL_CANDIDATE
+
 	if event is InputEventKey and event.pressed:
-		print("Getting here 0")
 		if selected_cell == null:
 			return
-		print("Getting here 1")
-		
+
 		if selected_cell.is_locked:
 			return
-		print("Getting here 2")
-		
+
 		if event.is_action_pressed("delete"):
 			if selected_cell.value != -1:
 				selected_cell.value = -1
-			else:
-				selected_cell.clear_candidates()
-				
-		print("Getting here 4")
-		
 
 		if event.is_action_pressed("backspace"):
 			if selected_cell.value == -1:
@@ -152,23 +162,23 @@ func _input(event):
 					selected_cell.value = -1
 				else:
 					selected_cell.value = (selected_cell.value - (selected_cell.value % 10)) / 10
-
-		print("Getting here 5")
 		
 		if display_mode == DisplayMode.ALPHABETIC:
-			print(selected_cell.value)
-			print("Key A:", KEY_A, "Input:", event.keycode)
+			# TODO: figure out how to do candidates with this or refactor and delete the option
 			if KEY_1 <= event.keycode and event.keycode <= KEY_9:
-				print("Reaching here")
-				selected_cell.value = event.keycode - KEY_0 #
+				if GameState.marking_mode == GameState.MarkingMode.CELL_CANDIDATE:
+					selected_cell.candidates.toggle_candidate(event.keycode - KEY_0)
+				else:
+					selected_cell.value = event.keycode - KEY_0 #
+
 			elif KEY_A <= event.keycode and event.keycode < KEY_A - 9 + HOUSE_SIZE:
-				print("Reaching here 2")
-				selected_cell.value = event.keycode - KEY_A + 10
-				
-				
+				if GameState.marking_mode == GameState.MarkingMode.CELL_CANDIDATE:
+					selected_cell.candidates.toggle_candidate(event.keycode - KEY_A + 10)
+				else:
+					selected_cell.value = event.keycode - KEY_A + 10
 		else:
 			if KEY_0 <= event.keycode and event.keycode <= KEY_9:
-				if selected_cell.value == -1 && event.keycode != KEY_0:
+				if selected_cell.value == -1 and event.keycode != KEY_0:
 					selected_cell.value = event.keycode - KEY_0
 					
 				elif (
