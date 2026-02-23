@@ -30,6 +30,11 @@ func _ready() -> void:
 	stylize_color_picker()
 	pass # Replace with function body.
 
+	# TODO: Migrate to system where settings exist in the Settings singleton:
+	# higlight_houses.button_pressed = Settings.highlight_houses
+	# Settings.highlight_houses = highlight_houses.buttonpressed
+	# Settings -> { func save(): ...} 
+
 func load_settings():
 	
 	highlight_houses.button_pressed = config.get_value("board_settings", "highlight_houses")
@@ -42,6 +47,8 @@ func load_settings():
 	update_game_settings()
 	
 func save_settings():
+
+	
 	config.set_value("board_settings", "highlight_houses", highlight_houses.button_pressed)
 	config.set_value("board_settings", "highlight_orthogonal", highlight_orthogonal.button_pressed)
 	config.set_value("board_settings", "highlight_same_value", highlight_same_value.button_pressed)

@@ -6,10 +6,11 @@ enum DisplayMode {
 	DOUBLE_DIGIT,
 }
 
-const BOARD_COLS = 16
-const BOARD_ROWS = 16
-const BIG_COLS = 4
-const BIG_ROWS = 4
+# maybe migrate these to a singleton that candidates / cell can read from as well?
+const BOARD_COLS = 9
+const BOARD_ROWS = 9
+const BIG_COLS = 3
+const BIG_ROWS = 3
 const NUM_HOUSES = BIG_COLS * BIG_ROWS
 const HOUSE_COLS = BOARD_COLS / BIG_COLS
 const HOUSE_ROWS = BOARD_ROWS / BIG_ROWS
@@ -53,7 +54,7 @@ func initialize_board(board := []) -> Error:
 			# connect to function for recognition
 			cell.button_up.connect(cell_pressed.bind(cell))
 			
-			cell.initialize_candidates(BIG_COLS, HOUSE_SIZE)
+			cell.initialize_candidates(HOUSE_COLS, HOUSE_SIZE)
 				
 			# add to house
 			house.add_child(cell)
@@ -117,19 +118,28 @@ func render_board():
 	var cells: Array[Node] = get_tree().get_nodes_in_group("cell")
 
 	for cell in cells:
-		render_cell(cell)
+		cell.render()
 
 func _input(event):
 
 	if event is InputEventKey and event.pressed:
+		print("Getting here 0")
 		if selected_cell == null:
 			return
+		print("Getting here 1")
 		
 		if selected_cell.is_locked:
 			return
+		print("Getting here 2")
 		
 		if event.is_action_pressed("delete"):
-			selected_cell.value = -1
+			if selected_cell.value != -1:
+				selected_cell.value = -1
+			else:
+				selected_cell.clear_candidates()
+				
+		print("Getting here 4")
+		
 
 		if event.is_action_pressed("backspace"):
 			if selected_cell.value == -1:
@@ -142,13 +152,19 @@ func _input(event):
 					selected_cell.value = -1
 				else:
 					selected_cell.value = (selected_cell.value - (selected_cell.value % 10)) / 10
-					
+
+		print("Getting here 5")
+		
 		if display_mode == DisplayMode.ALPHABETIC:
+			print(selected_cell.value)
+			print("Key A:", KEY_A, "Input:", event.keycode)
 			if KEY_1 <= event.keycode and event.keycode <= KEY_9:
-				selected_cell.value = event.keycode - KEY_0 # key 2 for offsetting it from landing on 0
-			
-			elif event.keycode in range(KEY_A, KEY_A - 9 + HOUSE_SIZE):
+				print("Reaching here")
+				selected_cell.value = event.keycode - KEY_0 #
+			elif KEY_A <= event.keycode and event.keycode < KEY_A - 9 + HOUSE_SIZE:
+				print("Reaching here 2")
 				selected_cell.value = event.keycode - KEY_A + 10
+				
 				
 		else:
 			if KEY_0 <= event.keycode and event.keycode <= KEY_9:
@@ -161,21 +177,11 @@ func _input(event):
 				) :
 					selected_cell.value = selected_cell.value * 10 + event.keycode - KEY_0
 		
-		render_cell(selected_cell)
-			
-		#if KEY_A < event.keycode and event.keycode < KEY_A + HOUSE_SIZE - 9: # 1 - 
+		selected_cell.render()
+		highlight()
+
 
 # HELPER FUNCTION STUFF
-
-func render_cell(cell: Cell):
-	if cell.value == -1:
-		cell.text = ""
-		return
-	
-	if display_mode == DisplayMode.ALPHABETIC:
-		cell.text = convert_value_to_char(cell.value)
-	else:
-		cell.text = str(cell.value)
 
 func get_row(big_index: int, small_index: int) -> Array[Cell]:
 	var row: Array[Cell] = []
@@ -195,14 +201,7 @@ func get_column(big_index: int, small_index: int) -> Array[Cell]:
 	
 	return column
 	
-func convert_value_to_char(value: int) -> String:
-	if value < 0:
-		return ""
-	if 0 < value and value < 10:
-		return str(value)
-	return char(value + 55)
-	# 87 is lower case, 55 is upper case
-	
+
 func update_settings():
 	
 	var display_mode_new = config.get_value("board_settings", "display_mode")

@@ -6,7 +6,7 @@ var is_locked: bool
 var big_index: int
 var small_index: int
 var is_highlighted: bool
-var candidates: GridContainer
+var candidates: Candidates
 
 const HIGHLIGHTED = preload("uid://be5h05f4havy0")
 const DEFAULT = preload("uid://dqqaua4my3ejj")
@@ -26,33 +26,18 @@ func _init(big_ndx: int, small_ndx, val := -1, highlighted := false, is_lock := 
 	add_to_group(str(val))
 	add_to_group("cell")
 	
-	candidates = GridContainer.new()
-	candidates.set_anchors_preset(Control.PRESET_FULL_RECT, false)
-	candidates.add_theme_constant_override("h_separation", 0)
-	candidates.add_theme_constant_override("v_separation", 0)
-	candidates.layout_direction = Control.LAYOUT_DIRECTION_INHERITED
-	
+	candidates = Candidates.new()
 
 	add_child(candidates)
 	
-func initialize_candidates(cols: int, num_candidates: int):
-	candidates.visible = true if value == -1 else false 
-	candidates.columns = cols
-	for i in range(num_candidates):
-		var candidate_label = Label.new()
-		# TESTING {
-		candidate_label.text = "%d" % rng.randi_range(1, num_candidates) if rng.randf() > 0.5 else ""
-		# }
 
-		candidate_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL | Control.SIZE_SHRINK_CENTER
-		candidate_label.size_flags_vertical = Control.SIZE_EXPAND_FILL | Control.SIZE_SHRINK_CENTER
-		candidate_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		candidate_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		
-		candidate_label.add_theme_font_size_override("font_size", 6)
-		candidates.add_child(candidate_label)
+func initialize_candidates(cols: int, house_size: int):
+	candidates.initialize_candidates(cols, house_size)
+	candidates.visible = (value == -1)
 
-
+func render():
+	text = get_display_value(value)
+	candidates.visible = (value == -1)
 
 func highlight():
 	if not is_highlighted:
@@ -66,3 +51,13 @@ func unhighlight():
 		is_highlighted = false
 		remove_from_group("highlighted")
 		
+static func get_display_value(val: int) -> String:
+	if val < 0:
+		return ""
+	if Settings.config.get_value("board_settings", "display_mode") == 0:
+		if 0 < val and val < 10:
+			return str(val)
+		return char(val + 55)
+	else:
+		return str(val)
+	# 87 is lower case, 55 is upper case
