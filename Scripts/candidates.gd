@@ -19,7 +19,7 @@ func initialize_candidates(cols: int, house_size: int):
 	columns = cols
 	num_candidates = house_size
 	for candidate_index in range(num_candidates):
-		candidate_values.append(false)
+		candidate_values.append(true)
 
 		var candidate_label = Label.new()
 		# TESTING {

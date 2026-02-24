@@ -7,10 +7,10 @@ enum DisplayMode {
 }
 
 # maybe migrate these to a singleton that candidates / cell can read from as well?
-const BOARD_COLS = 9
-const BOARD_ROWS = 9
-const BIG_COLS = 3
-const BIG_ROWS = 3
+const BOARD_COLS = 16
+const BOARD_ROWS = 16
+const BIG_COLS = 4
+const BIG_ROWS = 4
 const NUM_HOUSES = BIG_COLS * BIG_ROWS
 const HOUSE_COLS = BOARD_COLS / BIG_COLS
 const HOUSE_ROWS = BOARD_ROWS / BIG_ROWS
@@ -122,7 +122,11 @@ func highlight_candidates(value: int):
 		var candidate := c as Label
 		if candidate.text == "":
 			continue
-		candidate.add_theme_color_override("font_color", Settings.config.get_value("board_settings", "highlight_color"))
+			
+		if candidate.get_parent().get_parent().is_in_group("highlighted"):
+			candidate.add_theme_color_override("font_color", Color.BLACK)
+		else:
+			candidate.add_theme_color_override("font_color", Settings.config.get_value("board_settings", "highlight_color"))
 		candidate.add_to_group("highlighted_candidates")
 		
 

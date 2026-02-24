@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://1q8jxc1xor0m"]
+
+[ext_resource type="Script" uid="uid://bfxkffpmslikr" path="res://Scripts/start_menu.gd" id="1_juhg0"]
+
+[node name="StartMenu" type="Control" unique_id=830430496]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_juhg0")
+
+[node name="Button" type="Button" parent="." unique_id=1022915962]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 446.0
+offset_right = 712.0
+offset_bottom = 504.58997
+text = "Enter Game"
+
+[node name="Button2" type="Button" parent="." unique_id=1470323161]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 528.0
+offset_right = 712.0
+offset_bottom = 592.0
+text = "Setings"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
