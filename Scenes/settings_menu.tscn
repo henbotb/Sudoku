@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6qpnuygpq6wf"]
+[gd_scene format=3 uid="uid://b6qpnuygpq6wf"]
 
 [ext_resource type="Theme" uid="uid://c6pxp4m17rhm" path="res://Themes/settings.tres" id="1_8uw7q"]
 [ext_resource type="Script" uid="uid://c07ve34vi8rsv" path="res://Scripts/settings_menu.gd" id="1_bxjf0"]
 
-[node name="SettingsMenu" type="Control"]
+[node name="SettingsMenu" type="Control" unique_id=1917882044]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_bxjf0")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1699648056]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,59 +26,59 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+[node name="TabContainer" type="TabContainer" parent="MarginContainer" unique_id=1396842518]
 layout_mode = 2
 theme = ExtResource("1_8uw7q")
 current_tab = 1
 
-[node name="Game Settings" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+[node name="Game Settings" type="VBoxContainer" parent="MarginContainer/TabContainer" unique_id=2069897818]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Game Settings"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Game Settings" unique_id=764570410]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Highlight house when cell is selected"
 
-[node name="Board Settings" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+[node name="Board Settings" type="VBoxContainer" parent="MarginContainer/TabContainer" unique_id=997995161]
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Board Settings"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Board Settings" unique_id=818266019]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Highlight Settings"
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/TabContainer/Board Settings"]
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/TabContainer/Board Settings" unique_id=1227449039]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Hightlight when empty cells selected"
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings" unique_id=507347993]
 layout_mode = 2
 button_pressed = true
 text = "Highlight house when cell is selected"
 
-[node name="CheckBox2" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
+[node name="CheckBox2" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings" unique_id=1828486931]
 layout_mode = 2
 button_pressed = true
 text = "Highlight row / column when cell is selected"
 
-[node name="CheckBox3" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
+[node name="CheckBox3" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings" unique_id=668747734]
 layout_mode = 2
 button_pressed = true
 text = "Highlight other cells with the same value when cell is selected"
 
-[node name="CheckBox4" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
+[node name="CheckBox4" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings" unique_id=1845666763]
 layout_mode = 2
 button_pressed = true
 text = "Highlight candidate values with the same value in cells when cell is selected"
 
-[node name="Control" type="HBoxContainer" parent="MarginContainer/TabContainer/Board Settings"]
+[node name="Control" type="HBoxContainer" parent="MarginContainer/TabContainer/Board Settings" unique_id=1127038546]
 layout_mode = 2
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/TabContainer/Board Settings/Control"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/TabContainer/Board Settings/Control" unique_id=1917111648]
 custom_minimum_size = Vector2(46.805, 0)
 layout_mode = 2
 theme = ExtResource("1_8uw7q")
@@ -86,34 +86,13 @@ color = Color(1, 0.38395518, 0.27377793, 1)
 edit_alpha = false
 edit_intensity = false
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Board Settings/Control"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Board Settings/Control" unique_id=719541854]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Set Highlight Color"
 
-[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Board Settings"]
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Board Settings" unique_id=2009795399]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Cell Settings"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Board Settings"]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="MarginContainer/TabContainer/Board Settings/HBoxContainer"]
-layout_mode = 2
-text = "Display type for board sizes greater than 9"
-
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/TabContainer/Board Settings/HBoxContainer"]
-layout_mode = 2
-selected = 0
-item_count = 2
-popup/item_0/text = "Alphabetic"
-popup/item_0/id = 0
-popup/item_1/text = "Multi-digit"
-popup/item_1/id = 2
-
-[node name="CheckBox6" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings"]
-layout_mode = 2
-button_pressed = true
-text = "Double click to edit cell value"

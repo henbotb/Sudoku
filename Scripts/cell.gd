@@ -25,10 +25,10 @@ func _init(big_ndx: int, small_ndx, val := -1, highlighted := false, is_lock := 
 	size_flags_vertical = Control.SIZE_EXPAND_FILL
 	add_to_group(str(val))
 	add_to_group("cell")
-	
 	candidates = Candidates.new()
 
 	add_child(candidates)
+
 	
 
 func initialize_candidates(cols: int, house_size: int):
@@ -51,13 +51,11 @@ func unhighlight():
 		is_highlighted = false
 		remove_from_group("highlighted")
 		
+		
 static func get_display_value(val: int) -> String:
 	if val < 0:
 		return ""
-	if Settings.config.get_value("board_settings", "display_mode") == 0:
-		if 0 < val and val < 10:
-			return str(val)
-		return char(val + 55)
-	else:
+	if 0 < val and val < 10:
 		return str(val)
+	return char(val + 55)
 	# 87 is lower case, 55 is upper case

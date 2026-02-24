@@ -1,22 +1,16 @@
 extends GridContainer
 class_name Board
 
-enum DisplayMode {
-	ALPHABETIC,
-	DOUBLE_DIGIT,
-}
-
 # maybe migrate these to a singleton that candidates / cell can read from as well?
-const BOARD_COLS = 16
-const BOARD_ROWS = 16
-const BIG_COLS = 4
-const BIG_ROWS = 4
+const BOARD_COLS = 9
+const BOARD_ROWS = 9
+const BIG_COLS = 3
+const BIG_ROWS = 3
 const NUM_HOUSES = BIG_COLS * BIG_ROWS
 const HOUSE_COLS = BOARD_COLS / BIG_COLS
 const HOUSE_ROWS = BOARD_ROWS / BIG_ROWS
 const HOUSE_SIZE = HOUSE_COLS * HOUSE_ROWS
 
-var display_mode: DisplayMode
 var selected_cell: Cell = null
 var config = Settings.config
 var rng = RandomNumberGenerator.new()
@@ -28,7 +22,6 @@ func _ready() -> void:
 	if initialize_board() != OK:
 		printerr("Board didn't initialize correctly")
 		
-	display_mode = config.get_value("board_settings", "display_mode")
 	render_board()
 		
 	
@@ -128,7 +121,7 @@ func highlight_candidates(value: int):
 		else:
 			candidate.add_theme_color_override("font_color", Settings.config.get_value("board_settings", "highlight_color"))
 		candidate.add_to_group("highlighted_candidates")
-		
+
 
 func render_board():
 	var cells: Array[Node] = get_tree().get_nodes_in_group("cell")
@@ -136,60 +129,43 @@ func render_board():
 	for cell in cells:
 		cell.render()
 
-func _input(event):
+var unique_line_identifier = 0
 
+func _input(event):
 	if event.is_action_pressed("toggle_candidate_marking"):
+		print("Toggling candidate marking %d" % unique_line_identifier)
 		if GameState.marking_mode == GameState.MarkingMode.CELL_CANDIDATE:
 			GameState.marking_mode = GameState.MarkingMode.ADD
 		else:
 			GameState.marking_mode = GameState.MarkingMode.CELL_CANDIDATE
 
 	if event is InputEventKey and event.pressed:
+		unique_line_identifier += 1
+		print("\nReaching input event key %d" % unique_line_identifier)
 		if selected_cell == null:
 			return
 
 		if selected_cell.is_locked:
 			return
 
-		if event.is_action_pressed("delete"):
+		if event.is_action_pressed("delete") or event.is_action_pressed("backspace"):
 			if selected_cell.value != -1:
 				selected_cell.value = -1
 
-		if event.is_action_pressed("backspace"):
-			if selected_cell.value == -1:
-				return
-			
-			if display_mode == DisplayMode.ALPHABETIC:
-				selected_cell.value = -1
+		if KEY_1 <= event.keycode and event.keycode <= KEY_9:
+			print("Made it through keycode comparison %d" % unique_line_identifier)
+			if GameState.marking_mode == GameState.MarkingMode.CELL_CANDIDATE:
+				print("Made it to marking mode comparison %d" % unique_line_identifier)
+				selected_cell.candidates.toggle_candidate(event.keycode - KEY_0)
 			else:
-				if 0 < selected_cell.value and selected_cell.value < 10:
-					selected_cell.value = -1
-				else:
-					selected_cell.value = (selected_cell.value - (selected_cell.value % 10)) / 10
-		
-		if display_mode == DisplayMode.ALPHABETIC:
-			# TODO: figure out how to do candidates with this or refactor and delete the option
-			if KEY_1 <= event.keycode and event.keycode <= KEY_9:
-				if GameState.marking_mode == GameState.MarkingMode.CELL_CANDIDATE:
-					selected_cell.candidates.toggle_candidate(event.keycode - KEY_0)
-				else:
-					selected_cell.value = event.keycode - KEY_0 #
+				selected_cell.value = event.keycode - KEY_0 #
 
-			elif KEY_A <= event.keycode and event.keycode < KEY_A - 9 + HOUSE_SIZE:
-				if GameState.marking_mode == GameState.MarkingMode.CELL_CANDIDATE:
-					selected_cell.candidates.toggle_candidate(event.keycode - KEY_A + 10)
-				else:
-					selected_cell.value = event.keycode - KEY_A + 10
-		else:
-			if KEY_0 <= event.keycode and event.keycode <= KEY_9:
-				if selected_cell.value == -1 and event.keycode != KEY_0:
-					selected_cell.value = event.keycode - KEY_0
-					
-				elif (
-					0 < selected_cell.value * 10 + event.keycode - KEY_0
-					and selected_cell.value * 10 + event.keycode - KEY_0 <= HOUSE_SIZE
-				) :
-					selected_cell.value = selected_cell.value * 10 + event.keycode - KEY_0
+		elif KEY_A <= event.keycode and event.keycode < KEY_A - 9 + HOUSE_SIZE:
+			if GameState.marking_mode == GameState.MarkingMode.CELL_CANDIDATE:
+				selected_cell.candidates.toggle_candidate(event.keycode - KEY_A + 10)
+			else:
+				selected_cell.value = event.keycode - KEY_A + 10
+		
 		
 		selected_cell.render()
 		highlight()
@@ -217,8 +193,4 @@ func get_column(big_index: int, small_index: int) -> Array[Cell]:
 	
 
 func update_settings():
-	
-	var display_mode_new = config.get_value("board_settings", "display_mode")
-	if display_mode != display_mode_new:
-		display_mode = display_mode_new
-		render_board()
+	render_board()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://crki050dtr1sx"]
+[gd_scene format=3 uid="uid://crki050dtr1sx"]
 
 [ext_resource type="Script" uid="uid://cv35sgeamxwl" path="res://Scripts/game.gd" id="1_3dryh"]
 [ext_resource type="Script" uid="uid://gqicysb8c852" path="res://Scripts/board.gd" id="2_wowpa"]
@@ -9,7 +9,7 @@
 shader = ExtResource("3_i6g32")
 shader_parameter/blur_amount = 1.5
 
-[node name="Game" type="Control"]
+[node name="Game" type="Control" unique_id=1813861977]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3dryh")
 
-[node name="Board" type="GridContainer" parent="."]
+[node name="Board" type="GridContainer" parent="." unique_id=62055842]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,7 +34,7 @@ grow_vertical = 2
 script = ExtResource("2_wowpa")
 metadata/_custom_type_script = "uid://gqicysb8c852"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1840567983]
 visible = false
 material = SubResource("ShaderMaterial_b2bpf")
 layout_mode = 1
@@ -44,6 +44,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsMenu" parent="." instance=ExtResource("4_1l0tm")]
+[node name="SettingsMenu" parent="." unique_id=442085523 instance=ExtResource("4_1l0tm")]
 visible = false
 layout_mode = 1
