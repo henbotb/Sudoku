@@ -19,17 +19,27 @@ var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 
-	if initialize_board() != OK:
+	if initialize_board("400050000105076009060400050900000510500090006027000008050004020200360104000010005") != OK:
 		printerr("Board didn't initialize correctly")
 		
 	render_board()
+
+
+func initialize_custom_board(board: String):
+	for house_ndx in range(NUM_HOUSES):
+		var house = GridContainer.new()
+		house.columns = HOUSE_COLS
+		house.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		house.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		
-	
-func initialize_board(board := []) -> Error:
-	if board != []:
-		# TODO: implement reading in other boards
-		return ERR_BUG
+		for cell in range(HOUSE_SIZE):
+			pass
 		
+
+# TODO: Refactor this to support custom boards,
+# maybe make it so that it takes in the default values then appends to the string special things:
+# 000.102..182 + etc.
+func initialize_board(board := "000000000000000000000000000000000000000000000000000000000000000000000000000000000") -> Error:
 	self.columns = BIG_COLS
 	
 	for house_ndx in range(NUM_HOUSES):
@@ -42,8 +52,13 @@ func initialize_board(board := []) -> Error:
 		
 		for cell_ndx in range(HOUSE_SIZE):
 			# setup button
-			var cell = Cell.new(house_ndx, cell_ndx, rng.randi_range(1, HOUSE_SIZE) if rng.randf() > 0.5 else -1)
-			
+			var cell: Cell
+			if int(board) == 0:
+				cell = Cell.new(house_ndx, cell_ndx, rng.randi_range(1, HOUSE_SIZE) if rng.randf() > 0.5 else 0)
+			else:
+				print("Trying to initialize:\nHouse Index: %d, Cell Index: %d\nActual: %d" % [house_ndx, cell_ndx, int(board[house_ndx * 9 + cell_ndx])])
+				cell = Cell.new(house_ndx, cell_ndx, int(board[house_ndx * 9 + cell_ndx]), false, true)
+				
 			# connect to function for recognition
 			cell.button_up.connect(cell_pressed.bind(cell))
 			
@@ -68,7 +83,7 @@ func highlight():
 	
 	if (
 		selected_cell == null 
-		or (selected_cell.value == -1 and not config.get_value("board_settings", "highlight_empty_cells"))
+		or (selected_cell.value == 0 and not config.get_value("board_settings", "highlight_empty_cells"))
 	):
 		return
 		
@@ -105,7 +120,7 @@ func highlight_orthogonal(big_index: int, small_index: int):
 		cell.highlight()
 	
 func highlight_same_value(value: int):
-	if(value == -1):
+	if(value == 0):
 		return
 	get_tree().call_group(str(value), "highlight")
 
@@ -141,7 +156,6 @@ func _input(event):
 
 	if event is InputEventKey and event.pressed:
 		unique_line_identifier += 1
-		print("\nReaching input event key %d" % unique_line_identifier)
 		if selected_cell == null:
 			return
 
@@ -149,13 +163,11 @@ func _input(event):
 			return
 
 		if event.is_action_pressed("delete") or event.is_action_pressed("backspace"):
-			if selected_cell.value != -1:
-				selected_cell.value = -1
+			if selected_cell.value != 0:
+				selected_cell.value = 0
 
 		if KEY_1 <= event.keycode and event.keycode <= KEY_9:
-			print("Made it through keycode comparison %d" % unique_line_identifier)
 			if GameState.marking_mode == GameState.MarkingMode.CELL_CANDIDATE:
-				print("Made it to marking mode comparison %d" % unique_line_identifier)
 				selected_cell.candidates.toggle_candidate(event.keycode - KEY_0)
 			else:
 				selected_cell.value = event.keycode - KEY_0 #
