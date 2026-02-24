@@ -11,21 +11,110 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_juhg0")
 
-[node name="Button" type="Button" parent="." unique_id=1022915962]
+[node name="ButtonStart" type="Button" parent="." unique_id=1022915962]
 layout_mode = 0
 offset_left = 434.0
-offset_top = 446.0
+offset_top = 383.0
 offset_right = 712.0
-offset_bottom = 504.58997
+offset_bottom = 441.58997
 text = "Enter Game"
 
-[node name="Button2" type="Button" parent="." unique_id=1470323161]
+[node name="ButtonSettings" type="Button" parent="." unique_id=1470323161]
 layout_mode = 0
 offset_left = 434.0
-offset_top = 528.0
+offset_top = 465.0
 offset_right = 712.0
-offset_bottom = 592.0
-text = "Setings"
+offset_bottom = 529.0
+text = "Settings
+"
 
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
-[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[node name="ButtonQuit" type="Button" parent="." unique_id=129593453]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 552.0
+offset_right = 712.0
+offset_bottom = 615.0
+text = "Quit
+"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1828446286]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -296.0
+offset_right = 296.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.31966758, 0.13105541, 0.17752498, 1)
+
+[node name="TextEdit" type="TextEdit" parent="ColorRect" unique_id=1407609240]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -228.0
+offset_right = 248.0
+offset_bottom = -196.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=975897904]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 36.0
+offset_right = 186.0
+offset_bottom = 59.0
+text = "Enter board code:"
+
+[node name="ButtonGenerate" type="Button" parent="ColorRect" unique_id=606494500]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -156.0
+offset_right = 128.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Generate Puzzle"
+
+[node name="Label2" type="Label" parent="ColorRect" unique_id=1197015583]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 214.0
+offset_right = 314.0
+offset_bottom = 237.0
+text = "OR"
+horizontal_alignment = 1
+
+[node name="ButtonCopy" type="Button" parent="ColorRect" unique_id=1324157622]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -12.0
+offset_right = 128.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Copy From Clipboard"
+
+[connection signal="button_up" from="ButtonStart" to="." method="_on_button_start_button_up"]
+[connection signal="button_up" from="ButtonQuit" to="." method="_on_button_quit_button_up"]
+[connection signal="button_up" from="ColorRect/ButtonGenerate" to="." method="_on_button_generate_button_up"]
+[connection signal="button_up" from="ColorRect/ButtonCopy" to="." method="_on_button_copy_button_up"]

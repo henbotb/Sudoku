@@ -31,5 +31,6 @@ func set_defaults():
 	config.set_value("board_settings", "highlight_orthogonal", true)
 	config.set_value("board_settings", "highlight_same_value", true)
 	config.set_value("board_settings", "highlight_candidates", true)
-	config.set_value("board_settings", "highlight_color", Color.CADET_BLUE)
 	config.set_value("board_settings", "highlight_empty_cells", true)
+	config.set_value("board_settings", "highlight_all", false)
+	config.set_value("board_settings", "highlight_color", Color.CADET_BLUE)

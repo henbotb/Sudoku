@@ -22,6 +22,7 @@ config/icon="res://Assets/icon.svg"
 [autoload]
 
 Settings="*res://Scripts/settings.gd"
+GameState="*uid://c4bxbxoc76whq"
 
 [input]
 

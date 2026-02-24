@@ -6,6 +6,7 @@ const BOARD_COLS = 9
 const BOARD_ROWS = 9
 const BIG_COLS = 3
 const BIG_ROWS = 3
+const NUM_CELLS = BOARD_COLS * BOARD_ROWS
 const NUM_HOUSES = BIG_COLS * BIG_ROWS
 const HOUSE_COLS = BOARD_COLS / BIG_COLS
 const HOUSE_ROWS = BOARD_ROWS / BIG_ROWS
@@ -19,27 +20,20 @@ var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 
-	if initialize_board("400050000105076009060400050900000510500090006027000008050004020200360104000010005") != OK:
+	if initialize_board(GameState.puzzle_base_board) != OK:
 		printerr("Board didn't initialize correctly")
 		
 	render_board()
 
 
-func initialize_custom_board(board: String):
-	for house_ndx in range(NUM_HOUSES):
-		var house = GridContainer.new()
-		house.columns = HOUSE_COLS
-		house.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		house.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		
-		for cell in range(HOUSE_SIZE):
-			pass
-		
 
 # TODO: Refactor this to support custom boards,
 # maybe make it so that it takes in the default values then appends to the string special things:
 # 000.102..182 + etc.
-func initialize_board(board := "000000000000000000000000000000000000000000000000000000000000000000000000000000000") -> Error:
+func initialize_board(board := "0".repeat(NUM_CELLS)) -> Error:
+	if board == "0".repeat(NUM_CELLS) or board == "":
+		board = "none_provided"
+	
 	self.columns = BIG_COLS
 	
 	for house_ndx in range(NUM_HOUSES):
@@ -53,10 +47,9 @@ func initialize_board(board := "000000000000000000000000000000000000000000000000
 		for cell_ndx in range(HOUSE_SIZE):
 			# setup button
 			var cell: Cell
-			if int(board) == 0:
+			if board == "none_provided":
 				cell = Cell.new(house_ndx, cell_ndx, rng.randi_range(1, HOUSE_SIZE) if rng.randf() > 0.5 else 0)
 			else:
-				print("Trying to initialize:\nHouse Index: %d, Cell Index: %d\nActual: %d" % [house_ndx, cell_ndx, int(board[house_ndx * 9 + cell_ndx])])
 				cell = Cell.new(house_ndx, cell_ndx, int(board[house_ndx * 9 + cell_ndx]), false, true)
 				
 			# connect to function for recognition
@@ -103,6 +96,9 @@ func highlight():
 	
 	if config.get_value("board_settings", "highlight_candidates"):
 		highlight_candidates(selected_cell.value)
+		
+	if config.get_value("board_settings", "highlight_all"):
+		highlight_all(selected_cell.value)
 
 func reset_highlights():
 	get_tree().call_group("highlighted", "unhighlight")
@@ -136,6 +132,14 @@ func highlight_candidates(value: int):
 		else:
 			candidate.add_theme_color_override("font_color", Settings.config.get_value("board_settings", "highlight_color"))
 		candidate.add_to_group("highlighted_candidates")
+
+func highlight_all(value: int):
+	var cells: Array[Node] = get_tree().get_nodes_in_group(str(value))
+	for cell in cells:
+		highlight_orthogonal(cell.big_index, cell.small_index)
+		highlight_house(cell.get_parent())
+		
+
 
 
 func render_board():

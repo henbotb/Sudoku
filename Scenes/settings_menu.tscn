@@ -75,6 +75,11 @@ layout_mode = 2
 button_pressed = true
 text = "Highlight candidate values with the same value in cells when cell is selected"
 
+[node name="CheckBox5" type="CheckBox" parent="MarginContainer/TabContainer/Board Settings" unique_id=1566473834]
+layout_mode = 2
+button_pressed = true
+text = "Highlight paths of all numbers of selected type"
+
 [node name="Control" type="HBoxContainer" parent="MarginContainer/TabContainer/Board Settings" unique_id=1127038546]
 layout_mode = 2
 

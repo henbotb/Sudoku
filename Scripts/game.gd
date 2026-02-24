@@ -6,7 +6,7 @@ var settings_currently_displayed = false
 @onready var settings_menu: Control = $SettingsMenu
 @onready var color_rect: ColorRect = $ColorRect
 
-func _input(ev):
+func _input(_ev):
 	if Input.is_action_just_pressed("settings"):
 		color_rect.visible = not settings_currently_displayed
 		settings_menu.visible = not settings_currently_displayed

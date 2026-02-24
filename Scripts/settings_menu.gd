@@ -10,6 +10,7 @@ var config = Settings.config
 @onready var highlight_same_value: CheckBox = $"MarginContainer/TabContainer/Board Settings/CheckBox3"
 @onready var highlight_candidates: CheckBox = $"MarginContainer/TabContainer/Board Settings/CheckBox4"
 @onready var highlight_empty_cells: CheckButton = $"MarginContainer/TabContainer/Board Settings/CheckButton"
+@onready var highlight_all: CheckBox = $"MarginContainer/TabContainer/Board Settings/CheckBox5"
 
 func stylize_color_picker():
 	var color_picker = color_picker_button.get_picker()
@@ -42,6 +43,7 @@ func load_settings():
 	highlight_candidates.button_pressed = config.get_value("board_settings", "highlight_candidates")
 	color_picker_button.color = config.get_value("board_settings", "highlight_color")
 	highlight_empty_cells.button_pressed = config.get_value("board_settings", "highlight_empty_cells")
+	highlight_all.button_pressed = config.get_value("board_settings", "highlight_all")
 	update_game_settings()
 	
 func save_settings():
@@ -53,6 +55,7 @@ func save_settings():
 	config.set_value("board_settings", "highlight_candidates", highlight_candidates.button_pressed)
 	config.set_value("board_settings", "highlight_color", color_picker_button.color)
 	config.set_value("board_settings", "highlight_empty_cells", highlight_empty_cells.button_pressed)
+	config.set_value("board_settings", "highlight_all", highlight_all.button_pressed)
 	
 	Settings.save()
 
