@@ -7,8 +7,15 @@ extends Control
 var rng = RandomNumberGenerator.new()
 
 func _on_button_generate_button_up() -> void:
-	if text_edit.text.lstrip(" ").rstrip(" ") != "":
-		GameState.puzzle_base_board = text_edit.text
+	if option_button.selected == -1:
+		text_edit.text = text_edit.text.lstrip(" ").rstrip(" ")
+		if( 
+			text_edit.text.length() == 81
+			and text_edit.text.is_valid_int()
+		):
+			GameState.puzzle_base_board = text_edit.text
+		else:
+			return
 	else:
 		match option_button.selected:
 			1:

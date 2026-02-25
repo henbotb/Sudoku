@@ -38,6 +38,7 @@ text = "Quit
 "
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1828446286]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -127,7 +128,6 @@ offset_left = 204.0
 offset_top = 236.0
 offset_right = 392.0
 offset_bottom = 267.0
-selected = 0
 item_count = 4
 popup/item_0/text = "Easy"
 popup/item_0/id = 0
