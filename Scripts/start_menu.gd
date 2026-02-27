@@ -39,7 +39,6 @@ func _on_button_start_button_up() -> void:
 	
 func _on_button_quit_button_up() -> void:
 	get_tree().quit()
-	
 
 func _input(event):
 	if event.is_action(&"settings"):

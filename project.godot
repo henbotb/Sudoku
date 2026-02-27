@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="SudokuGame"
-run/main_scene="uid://crki050dtr1sx"
+run/main_scene="uid://d30yqy8wiye5i"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]

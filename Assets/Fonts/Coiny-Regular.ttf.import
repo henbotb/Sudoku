@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cvc370stcep8m"
-path="res://.godot/imported/Poppins-SemiBold.ttf-9adf94bb416d4c17679a6c14ac245180.fontdata"
+uid="uid://b5bfptbpo36o2"
+path="res://.godot/imported/Coiny-Regular.ttf-cc2b09aa7f118ca94d9c7dd28c5357e4.fontdata"
 
 [deps]
 
-source_file="res://Assets/Poppins-SemiBold.ttf"
-dest_files=["res://.godot/imported/Poppins-SemiBold.ttf-9adf94bb416d4c17679a6c14ac245180.fontdata"]
+source_file="res://Assets/Fonts/Coiny-Regular.ttf"
+dest_files=["res://.godot/imported/Coiny-Regular.ttf-cc2b09aa7f118ca94d9c7dd28c5357e4.fontdata"]
 
 [params]
 

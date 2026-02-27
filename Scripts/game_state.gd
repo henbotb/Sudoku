@@ -8,3 +8,4 @@ enum MarkingMode {
 }
 
 var marking_mode = MarkingMode.ADD
+var in_game = false

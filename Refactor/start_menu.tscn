@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://d30yqy8wiye5i"]
 
+[ext_resource type="Script" uid="uid://bnyff1r2exkmv" path="res://Refactor/start_menu.gd" id="1_sjbdb"]
 [ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/default.tres" id="1_x2faa"]
+[ext_resource type="FontFile" uid="uid://cgp1e0xbo3x8n" path="res://Assets/Fonts/Poppins-Bold.ttf" id="2_f08h7"]
+[ext_resource type="Shader" uid="uid://8rmrr6mh67ra" path="res://Shaders/Blur.gdshader" id="3_sjbdb"]
+[ext_resource type="PackedScene" uid="uid://blmnss33r7uw2" path="res://Refactor/settings_menu.tscn" id="5_l3vcq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3vcq"]
+shader = ExtResource("3_sjbdb")
+shader_parameter/blur_amount = 1.5
 
 [node name="StartMenu" type="Control" unique_id=448957499]
 layout_mode = 3
@@ -9,8 +17,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sjbdb")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1759286130]
+[node name="BackgroundRect" type="ColorRect" parent="." unique_id=1759286130]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,13 +40,24 @@ offset_top = -109.0
 offset_right = 112.0
 offset_bottom = -25.0
 grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/separation = 12
 
-[node name="CreateGameButton" type="Button" parent="VBoxContainer" unique_id=1350174621]
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=1350174621]
 layout_mode = 2
 theme = ExtResource("1_x2faa")
-text = "Create Game
-"
+text = "New Game"
+
+[node name="ResumeGameButton" type="Button" parent="VBoxContainer" unique_id=678621163]
+layout_mode = 2
+theme = ExtResource("1_x2faa")
+disabled = true
+text = "Resume Game"
+
+[node name="MultiplayerButton" type="Button" parent="VBoxContainer" unique_id=400728497]
+layout_mode = 2
+theme = ExtResource("1_x2faa")
+text = "Join Multiplayer"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=2093368313]
 layout_mode = 2
@@ -48,3 +68,40 @@ text = "Settings"
 layout_mode = 2
 theme = ExtResource("1_x2faa")
 text = "Quit"
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1116790288]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -394.5
+offset_top = 32.0
+offset_right = 394.5
+offset_bottom = 318.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.827451, 0.49411765, 0.4745098, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_f08h7")
+theme_override_font_sizes/font_size = 208
+text = "Godoku"
+
+[node name="BlurRect" type="ColorRect" parent="." unique_id=1369406057]
+visible = false
+material = SubResource("ShaderMaterial_l3vcq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" parent="." unique_id=1967479882 instance=ExtResource("5_l3vcq")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="Settings" method="toggle_settings"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

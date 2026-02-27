@@ -2,7 +2,15 @@ extends Node
 
 var config = ConfigFile.new()
 
-var highlight_houses: bool
+# DISPLAY AND AUDIO SETTINGS
+var fullscreen: bool
+
+var master_percentage: int
+var music_percentage: int
+var effect_percentage: int
+
+# BOARD SETTINGS
+var highlight_house: bool
 var highlight_orthogonal: bool
 var highlight_same_value: bool
 var highlight_candidates: bool
@@ -11,12 +19,20 @@ var highlight_all: bool
 
 var highlight_color: Color
 
+# KEYBIND SETTINSG
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	var my_int = 12
+	var my_int_2 = 34
+	int(str(my_int) + str(my_int_2))
+	
 	# TODO: delete these lines, resets config for testing purpose
 	#var dir = DirAccess.open("user://")
 	#dir.remove("game_settings.cfg")
-
 	
 	if config.load("user://game_settings.cfg") != OK:
 		printerr("User didn't have a game_settings.cfg")
@@ -25,7 +41,15 @@ func _ready() -> void:
 	save()
 
 func load_settings():
-	highlight_houses = config.get_value("board_settings", "highlight_houses", true)
+	
+	# DISPLAY AND AUDIO SETTINGS
+	fullscreen = config.get_value("game_settings", "fullscreen", false)
+	master_percentage = config.get_value("game_settings", "master_percentage", 50)
+	music_percentage = config.get_value("game_settings", "music_percentage", 50)
+	effect_percentage = config.get_value("game_settings", "effect_percentage", 50)
+	
+	# BOARD SETTINGS
+	highlight_house = config.get_value("board_settings", "highlight_house", true)
 	highlight_orthogonal = config.get_value("board_settings", "highlight_orthogonal", true)
 	highlight_same_value= config.get_value("board_settings", "highlight_same_value", true)
 	highlight_candidates = config.get_value("board_settings", "highlight_candidates", true)
@@ -35,8 +59,16 @@ func load_settings():
 	highlight_color = config.get_value("board_settings", "highlight_color", Color.ROYAL_BLUE)
 
 
+
 func save():
-	config.set_value("board_settings", "highlight_houses", highlight_houses)
+	# DISPLAY AND AUDIO SETTINGS
+	config.set_value("game_settings", "fullscreen", fullscreen)
+	config.set_value("game_settings", "master_percentage", master_percentage)
+	config.set_value("game_settings", "music_percentage", music_percentage)
+	config.set_value("game_settings", "effect_percentage", effect_percentage)
+	
+	# BOARD SETTINGS
+	config.set_value("board_settings", "highlight_house", highlight_house)
 	config.set_value("board_settings", "highlight_orthogonal", highlight_orthogonal)
 	config.set_value("board_settings", "highlight_same_value", highlight_same_value)
 	config.set_value("board_settings", "highlight_candidates", highlight_candidates)
@@ -44,6 +76,8 @@ func save():
 	config.set_value("board_settings", "highlight_all", highlight_all)
 	
 	config.set_value("board_settings", "highlight_color", highlight_color)
+	
+	# KEYBIND SETTINGS
 
 	config.save("user://game_settings.cfg")
 	

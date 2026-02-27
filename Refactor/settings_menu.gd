@@ -1,0 +1,57 @@
+extends Control
+
+@onready var blur_rect: ColorRect = $BlurRect
+
+@onready var master_slider: HSlider = $SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/MasterVolumeHBox/MasterSlider
+@onready var music_slider: HSlider = $SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/MusicVolumeHBox/MusicSlider
+@onready var effect_slider: HSlider = $SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/EffectVolumeHBox/EffectSlider
+
+@onready var master_percentage: Label = $SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/MasterVolumeHBox/MasterPercentage
+@onready var music_percentage: Label = $SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/MusicVolumeHBox/MusicPercentage
+@onready var effects_percentage: Label = $SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/EffectVolumeHBox/EffectsPercentage
+
+@onready var color_picker_button: ColorPickerButton = $SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer/HBoxContainer/ColorPickerButton
+
+# I can't tell if basically this whole script should 
+# be the autoload singleton that settings.gd is by itself
+# the only thing this script would have to do is: 
+# read in values
+# .tscn -> signal when changed
+# ^^^^
+# maybe add a save button for this expressed purpose?
+# but also people like real time responses to their setting updates (sound setting ie)
+
+# TODO: font size / thresholds, gui scale maybe?
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	var color_picker = color_picker_button.get_picker()
+	color_picker.sampler_visible = false
+	color_picker.color_modes_visible = false
+	color_picker.sliders_visible = false
+	color_picker.hex_visible = false
+	color_picker.presets_visible = false
+	
+func toggle_settings() -> void:
+	visible = not visible
+	
+func update_slider_percentage(value: float, slider_name: StringName) -> void:
+	match slider_name:
+		"music":
+			music_percentage.text = str(roundi(value))
+		"effect":
+			effects_percentage.text = str(roundi(value))
+		"master", _:
+			master_percentage.text = str(roundi(value))
+
+func toggle_fullscreen(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _input(event):
+	if event.is_action_pressed(&"settings") and (GameState.in_game or visible):
+		toggle_settings()

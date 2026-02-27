@@ -20,7 +20,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 
-	if initialize_board(GameState.puzzle_base_board) != OK:
+	if initialize_board() != OK:
 		printerr("Board didn't initialize correctly")
 		
 	render_board()
