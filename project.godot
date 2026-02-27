@@ -15,14 +15,18 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="SudokuGame"
-run/main_scene="uid://1q8jxc1xor0m"
+run/main_scene="uid://crki050dtr1sx"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://Assets/icon.svg"
 
 [autoload]
 
 Settings="*res://Scripts/settings.gd"
 GameState="*uid://c4bxbxoc76whq"
+NetworkHandler="*uid://3ikwuirbvmw7"
+
+[display]
+
+mouse_cursor/custom_image="uid://bg564uby80wuh"
 
 [input]
 

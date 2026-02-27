@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://crki050dtr1sx"]
 
 [ext_resource type="Script" uid="uid://cv35sgeamxwl" path="res://Scripts/game.gd" id="1_3dryh"]
+[ext_resource type="PackedScene" uid="uid://ei00tr1235gg" path="res://Scenes/Multiplayer/multiplayer_connect.tscn" id="2_i6g32"]
 [ext_resource type="Script" uid="uid://gqicysb8c852" path="res://Scripts/board.gd" id="2_wowpa"]
 [ext_resource type="Shader" uid="uid://8rmrr6mh67ra" path="res://Shaders/Blur.gdshader" id="3_i6g32"]
 [ext_resource type="PackedScene" uid="uid://b6qpnuygpq6wf" path="res://Scenes/settings_menu.tscn" id="4_1l0tm"]
+[ext_resource type="Script" uid="uid://c8hcih5vutry8" path="res://Scripts/multiplayer_spawner.gd" id="6_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://c82y7kwaq4umc" path="res://Scenes/Multiplayer/multiplayer_cursor.tscn" id="7_1l0tm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b2bpf"]
 shader = ExtResource("3_i6g32")
@@ -17,6 +20,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3dryh")
+
+[node name="MultiplayerConnect" parent="." unique_id=923575184 instance=ExtResource("2_i6g32")]
+layout_mode = 1
 
 [node name="Board" type="GridContainer" parent="." unique_id=62055842]
 layout_mode = 1
@@ -47,3 +53,9 @@ grow_vertical = 2
 [node name="SettingsMenu" parent="." unique_id=442085523 instance=ExtResource("4_1l0tm")]
 visible = false
 layout_mode = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1769981007]
+_spawnable_scenes = PackedStringArray("uid://c82y7kwaq4umc")
+spawn_path = NodePath("..")
+script = ExtResource("6_1l0tm")
+network_player = ExtResource("7_1l0tm")

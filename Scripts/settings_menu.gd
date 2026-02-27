@@ -28,37 +28,30 @@ func _ready() -> void:
 
 	load_settings()
 	stylize_color_picker()
+	update_game_settings()
 	pass # Replace with function body.
 
-	# TODO: Migrate to system where settings exist in the Settings singleton:
-	# higlight_houses.button_pressed = Settings.highlight_houses
-	# Settings.highlight_houses = highlight_houses.buttonpressed
-	# Settings -> { func save(): ...} 
-
 func load_settings():
-	
-	highlight_houses.button_pressed = config.get_value("board_settings", "highlight_houses")
-	highlight_orthogonal.button_pressed = config.get_value("board_settings", "highlight_orthogonal")
-	highlight_same_value.button_pressed = config.get_value("board_settings", "highlight_same_value")
-	highlight_candidates.button_pressed = config.get_value("board_settings", "highlight_candidates")
-	color_picker_button.color = config.get_value("board_settings", "highlight_color")
-	highlight_empty_cells.button_pressed = config.get_value("board_settings", "highlight_empty_cells")
-	highlight_all.button_pressed = config.get_value("board_settings", "highlight_all")
-	update_game_settings()
+	highlight_houses.button_pressed = Settings.highlight_houses
+	highlight_orthogonal.button_pressed = Settings.highlight_orthogonal
+	highlight_same_value.button_pressed = Settings.highlight_same_value
+	highlight_candidates.button_pressed = Settings.highlight_candidates
+	color_picker_button.color = Settings.highlight_color
+	highlight_empty_cells.button_pressed = Settings.highlight_empty_cells
+	highlight_all.button_pressed = Settings.highlight_all
 	
 func save_settings():
-
-	
-	config.set_value("board_settings", "highlight_houses", highlight_houses.button_pressed)
-	config.set_value("board_settings", "highlight_orthogonal", highlight_orthogonal.button_pressed)
-	config.set_value("board_settings", "highlight_same_value", highlight_same_value.button_pressed)
-	config.set_value("board_settings", "highlight_candidates", highlight_candidates.button_pressed)
-	config.set_value("board_settings", "highlight_color", color_picker_button.color)
-	config.set_value("board_settings", "highlight_empty_cells", highlight_empty_cells.button_pressed)
-	config.set_value("board_settings", "highlight_all", highlight_all.button_pressed)
+	Settings.highlight_houses = highlight_houses.button_pressed
+	Settings.highlight_orthogonal = highlight_orthogonal.button_pressed
+	Settings.highlight_same_value = highlight_same_value.button_pressed
+	Settings.highlight_candidates = highlight_candidates.button_pressed
+	Settings.highlight_color = color_picker_button.color
+	Settings.highlight_empty_cells = highlight_empty_cells.button_pressed
+	Settings.highlight_all = highlight_all.button_pressed
 	
 	Settings.save()
 
 func update_game_settings():
-	SELECTED.get_stylebox("normal", "Button").bg_color = config.get_value("board_settings", "highlight_color")
+	# TODO: Maybe move this to settings.gd as well
+	SELECTED.get_stylebox("normal", "Button").bg_color = Settings.highlight_color
 	
