@@ -1,3 +1,4 @@
+class_name BoardResource
 extends Resource
 
 var BOARD_COLS: int
@@ -13,7 +14,7 @@ var BLOCK_SIZE = BLOCK_COLS * BLOCK_ROWS
 var board_array: Array = []
 
 # unsure: string in format: #...# (1-9, a-whatever)
-var board_string: String = ""
+var board_string: String
 
 func _init(board_str: String = "") -> void:
 	board_string = board_str

@@ -1,25 +1,36 @@
 extends Control
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var code_line_edit: LineEdit = $MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/CodeLineEdit
+@onready var multiplayer_panel: Panel = $MultiplayerPanel
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 func _on_quit_button_pressed() -> void:
 	Settings.save()
 	get_tree().quit()
 
+func toggle_code_visibility():
+	code_line_edit.secret = not code_line_edit.secret 
 
-func _on_multiplayer_button_pressed() -> void:
-	pass # Replace with function body.
+func paste_code():
+	code_line_edit.text = DisplayServer.clipboard_get()
+
+func toggle_multiplayer_visibility(on: bool):
+	multiplayer_panel.visible = on
+
 
 func _on_resume_game_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_new_game_button_pressed() -> void:
 	GameState.in_game = true
+	# TODO: add more elaborate start menu
+	get_tree().change_scene_to_file("res://Refactor/puzzle_view.tscn")
 	pass # Replace with function body.
+	
+# TODO: change all _input for _gui_input()
+func _input(event: InputEvent):
+	if event.is_action_pressed(&"settings"):
+		toggle_multiplayer_visibility(false)
+		

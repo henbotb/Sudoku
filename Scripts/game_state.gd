@@ -1,3 +1,5 @@
+# TODO: move to resource
+
 extends Node
 
 enum MarkingMode {

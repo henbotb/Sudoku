@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://ceg2ys6ghalka"]
 
+[ext_resource type="Script" uid="uid://bgse4ifyidkof" path="res://Refactor/puzzle_view.gd" id="1_prdia"]
+[ext_resource type="PackedScene" uid="uid://dhyaupkgxqpy0" path="res://Refactor/pause_menu.tscn" id="2_py8bp"]
+
 [node name="PuzzleView" type="Control" unique_id=284140510]
 layout_mode = 3
 anchors_preset = 15
@@ -8,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+script = ExtResource("1_prdia")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1973043973]
 layout_mode = 1
@@ -28,3 +32,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.5689727, 0.56897277, 0.5689727, 1)
+
+[node name="PauseMenu" parent="." unique_id=2128226187 instance=ExtResource("2_py8bp")]
+layout_mode = 1

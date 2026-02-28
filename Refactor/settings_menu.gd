@@ -33,9 +33,9 @@ func _ready() -> void:
 	color_picker.hex_visible = false
 	color_picker.presets_visible = false
 	
-func toggle_settings() -> void:
-	visible = not visible
-	
+func display_settings(on: bool) -> void:
+	visible = on
+
 func update_slider_percentage(value: float, slider_name: StringName) -> void:
 	match slider_name:
 		"music":
@@ -51,7 +51,12 @@ func toggle_fullscreen(toggled_on: bool) -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
+# TODO: make more comprehensive "window order" settings,
+# maybe have a singleton that tracks the "outermost" control node, and on
+# &"escape", it reads from the singleton to close the outermost layer
+# and changes singletons reference to the outermost layer
+# maybe test this in a new project
 
 func _input(event):
-	if event.is_action_pressed(&"settings") and (GameState.in_game or visible):
-		toggle_settings()
+	if event.is_action_pressed(&"settings") and visible:
+		display_settings(false)

@@ -100,8 +100,90 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 
+[node name="MultiplayerPanel" type="Panel" parent="." unique_id=2048508655]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 366.0
+offset_top = 56.0
+offset_right = -368.0
+offset_bottom = -112.0
+theme = ExtResource("1_x2faa")
+
+[node name="MarginContainer" type="MarginContainer" parent="MultiplayerPanel" unique_id=1361396481]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MultiplayerPanel/MarginContainer" unique_id=2113324293]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MultiplayerPanel/MarginContainer/VBoxContainer2" unique_id=1117641286]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Multiplayer"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MultiplayerPanel/MarginContainer/VBoxContainer2" unique_id=1020852091]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=920017235]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Join Friends Game"
+
+[node name="JoinGameButton" type="Button" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=2134534560]
+layout_mode = 2
+text = "Join Game"
+
+[node name="Label2" type="Label" parent="MultiplayerPanel/MarginContainer/VBoxContainer2" unique_id=2005000188]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "OR"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerPanel/MarginContainer/VBoxContainer2" unique_id=52990067]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=985374712]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Enter Invite Link"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1200864775]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CodeLineEdit" type="LineEdit" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=115565220]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter code"
+editable = false
+virtual_keyboard_enabled = false
+secret = true
+
+[node name="ShowCodeButton" type="Button" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1756327498]
+layout_mode = 2
+text = "Show"
+
+[node name="PasteCodeButton" type="Button" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=428317563]
+layout_mode = 2
+text = "Paste"
+
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="Settings" method="toggle_settings"]
+[connection signal="pressed" from="VBoxContainer/MultiplayerButton" to="." method="toggle_multiplayer_visibility" binds= [true]]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="Settings" method="display_settings" binds= [true]]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/ShowCodeButton" to="." method="toggle_code_visibility"]
+[connection signal="pressed" from="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/PasteCodeButton" to="." method="paste_code"]

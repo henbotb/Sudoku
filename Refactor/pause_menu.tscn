@@ -1,0 +1,219 @@
+[gd_scene format=3 uid="uid://dhyaupkgxqpy0"]
+
+[ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/default.tres" id="1_yjef2"]
+[ext_resource type="Script" uid="uid://byuhxqm778err" path="res://Refactor/pause_menu.gd" id="2_xyptv"]
+[ext_resource type="Shader" uid="uid://8rmrr6mh67ra" path="res://Shaders/Blur.gdshader" id="3_uv1he"]
+[ext_resource type="PackedScene" uid="uid://blmnss33r7uw2" path="res://Refactor/settings_menu.tscn" id="4_nrm23"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddtuy"]
+shader = ExtResource("3_uv1he")
+shader_parameter/blur_amount = 1.5
+
+[node name="PauseMenu" type="Control" unique_id=2128226187]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yjef2")
+script = ExtResource("2_xyptv")
+
+[node name="BlurRect" type="ColorRect" parent="." unique_id=1067766824]
+material = SubResource("ShaderMaterial_ddtuy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseButtons" type="VBoxContainer" parent="." unique_id=1696721140]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -248.0
+offset_right = 160.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 18
+alignment = 2
+
+[node name="ResumeButton" type="Button" parent="PauseButtons" unique_id=1666208256]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Resume Game"
+
+[node name="SettingsButton" type="Button" parent="PauseButtons" unique_id=1336396107]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Settings"
+
+[node name="HostButton" type="Button" parent="PauseButtons" unique_id=1007588304]
+layout_mode = 2
+text = "Host Online"
+
+[node name="QuitToMenuButton" type="Button" parent="PauseButtons" unique_id=425723410]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Quit to Menu"
+
+[node name="Settings" parent="." unique_id=1967479882 instance=ExtResource("4_nrm23")]
+visible = false
+layout_mode = 1
+
+[node name="ConfirmQuitPanel" type="Panel" parent="." unique_id=173520108]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -449.0
+offset_right = 240.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ConfirmQuitPanel" unique_id=1166696854]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.080000006
+anchor_right = 0.95000005
+anchor_bottom = 0.929
+offset_left = 32.0
+offset_top = 80.040016
+offset_right = -32.00003
+offset_bottom = -83.07301
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmQuitPanel/MarginContainer" unique_id=1651889672]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="ConfirmQuitPanel/MarginContainer/VBoxContainer" unique_id=1464842471]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Are you sure you want to quit?"
+
+[node name="Label2" type="Label" parent="ConfirmQuitPanel/MarginContainer/VBoxContainer" unique_id=2037692905]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+text = "Your progress will be saved"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmQuitPanel/MarginContainer/VBoxContainer" unique_id=1058927926]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ConfirmQuitButton" type="Button" parent="ConfirmQuitPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=419355152]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit"
+
+[node name="RejectQuitButton" type="Button" parent="ConfirmQuitPanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1851723183]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Return to Game"
+
+[node name="MultiplayerPanel" type="Panel" parent="." unique_id=1970636904]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 366.0
+offset_top = 56.0
+offset_right = -368.0
+offset_bottom = -112.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MultiplayerPanel" unique_id=79351108]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MultiplayerPanel/MarginContainer" unique_id=20191971]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MultiplayerPanel/MarginContainer/VBoxContainer2" unique_id=2146922596]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Multiplayer"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MultiplayerPanel/MarginContainer/VBoxContainer2" unique_id=578529120]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer2" unique_id=906534737]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Invite friends to game"
+
+[node name="InviteFriendsButton" type="Button" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer2" unique_id=1293202604]
+layout_mode = 2
+text = "Invite Friends"
+
+[node name="Label2" type="Label" parent="MultiplayerPanel/MarginContainer/VBoxContainer2" unique_id=868180520]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "OR"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MultiplayerPanel/MarginContainer/VBoxContainer2" unique_id=1400286792]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=1852620536]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Send invite link"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=2131362289]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CodeLineEdit" type="LineEdit" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=970642337]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "kjashdfkjahsdkjfh"
+editable = false
+virtual_keyboard_enabled = false
+secret = true
+
+[node name="ShowCodeButton" type="Button" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=1115003997]
+layout_mode = 2
+text = "Show"
+
+[node name="CopyCodeButton" type="Button" parent="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=1777422]
+layout_mode = 2
+text = "Copy"
+
+[connection signal="pressed" from="PauseButtons/ResumeButton" to="." method="display_pause_menu" binds= [false]]
+[connection signal="pressed" from="PauseButtons/SettingsButton" to="Settings" method="display_settings" binds= [true]]
+[connection signal="pressed" from="PauseButtons/HostButton" to="." method="display_multiplayer" binds= [true]]
+[connection signal="pressed" from="PauseButtons/QuitToMenuButton" to="." method="display_confirm_quit" binds= [true]]
+[connection signal="pressed" from="ConfirmQuitPanel/MarginContainer/VBoxContainer/HBoxContainer/ConfirmQuitButton" to="." method="confirm_quit"]
+[connection signal="pressed" from="ConfirmQuitPanel/MarginContainer/VBoxContainer/HBoxContainer/RejectQuitButton" to="." method="display_confirm_quit" binds= [false]]
+[connection signal="pressed" from="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer/ShowCodeButton" to="." method="toggle_code_displayed"]
+[connection signal="pressed" from="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer/CopyCodeButton" to="." method="copy_code"]

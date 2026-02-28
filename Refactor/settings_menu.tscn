@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_5a856")
 
 [node name="BlurRect" type="ColorRect" parent="." unique_id=1198721913]
+process_priority = 1
 material = SubResource("ShaderMaterial_6v562")
 layout_mode = 1
 anchors_preset = 15
@@ -38,13 +39,12 @@ offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_b4jr2")
-current_tab = 1
+current_tab = 0
 tab_0/title = "Display & Audio"
 tab_1/title = "Board"
 tab_2/title = "Keybinds"
 
 [node name="DisplayAndAudioTabBar" type="TabBar" parent="SettingTabContainer" unique_id=1422655182]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 metadata/_tab_name = "Display & Audio"
@@ -147,6 +147,7 @@ size_flags_stretch_ratio = 2.0
 text = "0"
 
 [node name="BoardTabBar" type="TabBar" parent="SettingTabContainer" unique_id=930520716]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 metadata/_tab_name = "Board"
