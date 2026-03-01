@@ -1,7 +1,5 @@
 extends Control
 
-@onready var blur_rect: ColorRect = $BlurRect
-
 @onready var master_slider: HSlider = $SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/MasterVolumeHBox/MasterSlider
 @onready var music_slider: HSlider = $SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/MusicVolumeHBox/MusicSlider
 @onready var effect_slider: HSlider = $SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/EffectVolumeHBox/EffectSlider
@@ -23,6 +21,7 @@ extends Control
 
 # TODO: font size / thresholds, gui scale maybe?
 
+var handle_self_input := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,11 +38,11 @@ func display_settings(on: bool) -> void:
 func update_slider_percentage(value: float, slider_name: StringName) -> void:
 	match slider_name:
 		"music":
-			music_percentage.text = str(roundi(value))
+			music_percentage.text = str(roundi(value * 66.67))
 		"effect":
-			effects_percentage.text = str(roundi(value))
+			effects_percentage.text = str(roundi(value * 66.67))
 		"master", _:
-			master_percentage.text = str(roundi(value))
+			master_percentage.text = str(roundi(value * 66.67))
 
 func toggle_fullscreen(toggled_on: bool) -> void:
 	if toggled_on:
@@ -58,5 +57,8 @@ func toggle_fullscreen(toggled_on: bool) -> void:
 # maybe test this in a new project
 
 func _input(event):
+	if not handle_self_input:
+		return
+		
 	if event.is_action_pressed(&"settings") and visible:
 		display_settings(false)

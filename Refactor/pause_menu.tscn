@@ -140,6 +140,8 @@ offset_left = 366.0
 offset_top = 56.0
 offset_right = -368.0
 offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MultiplayerPanel" unique_id=79351108]
 layout_mode = 1

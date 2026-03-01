@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://blmnss33r7uw2"]
 
 [ext_resource type="Script" uid="uid://bqh1ypv0h0ck7" path="res://Refactor/settings_menu.gd" id="1_5a856"]
-[ext_resource type="Shader" uid="uid://8rmrr6mh67ra" path="res://Shaders/Blur.gdshader" id="2_uwrql"]
 [ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/default.tres" id="3_b4jr2"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6v562"]
-shader = ExtResource("2_uwrql")
-shader_parameter/blur_amount = 1.5
 
 [node name="Settings" type="Control" unique_id=1967479882]
 layout_mode = 3
@@ -16,16 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5a856")
-
-[node name="BlurRect" type="ColorRect" parent="." unique_id=1198721913]
-process_priority = 1
-material = SubResource("ShaderMaterial_6v562")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="SettingTabContainer" type="TabContainer" parent="." unique_id=1816981668]
 layout_mode = 1
@@ -94,7 +79,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 11.0
-rounded = true
+max_value = 1.5
+step = 0.001
 
 [node name="MasterPercentage" type="Label" parent="SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/MasterVolumeHBox" unique_id=1884936803]
 layout_mode = 2
@@ -116,7 +102,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 11.0
-rounded = true
+max_value = 1.5
+step = 0.001
 
 [node name="MusicPercentage" type="Label" parent="SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/MusicVolumeHBox" unique_id=550128561]
 layout_mode = 2
@@ -138,7 +125,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 11.0
-rounded = true
+max_value = 1.5
+step = 0.001
 
 [node name="EffectsPercentage" type="Label" parent="SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/EffectVolumeHBox" unique_id=352164372]
 layout_mode = 2
