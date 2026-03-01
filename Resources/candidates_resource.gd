@@ -1,4 +1,4 @@
-class_name BoardResource
+class_name CandidateResource
 extends Resource
 
 # TESTING: remove exports
@@ -13,18 +13,7 @@ var NUM_COLUMNS_PER_BLOCK := 0
 var NUM_ROWS_PER_BLOCK := 0
 var NUM_CELLS_PER_BLOCK := 0
 
-var board_array: Array = []
-
-# unsure: string in format: #...# (1-9, a-whatever)
-#determine string format when programming the sudoku generator
-#maybe something like: difficulty(?), rows, cols, big rows, big cols, board string
-var board_string: String
-
-
-# < 0 = locked cell
-# > 0 = user placed cell
-# = 0 = empty cell
-
+var candidate_array = []
 
 func _init(board_cols: int, board_rows: int, big_cols: int, big_rows: int) -> void:
 	NUM_COLS = board_cols
@@ -36,16 +25,14 @@ func _init(board_cols: int, board_rows: int, big_cols: int, big_rows: int) -> vo
 	NUM_COLUMNS_PER_BLOCK = NUM_COLS / NUM_BLOCK_COLS
 	NUM_ROWS_PER_BLOCK = NUM_ROWS / NUM_BLOCK_ROWS
 	NUM_CELLS_PER_BLOCK = NUM_COLUMNS_PER_BLOCK * NUM_ROWS_PER_BLOCK
-
+	
 func _ready() -> void:
-	# since the read-in is done once here, this is where 
-	# the string (2d/1d array format) -> big/small index format will happen
 	for y in range(NUM_ROWS):
-		var row: Array[int] = []
+		var row: Array[bool] = []
 		for x in range(NUM_COLS):
 			# TODO: Add string read-in
 			#if string[y * BLOCK_SIZE + x] != 0:
-			#	row.append(-1 * int(string[y * BLOCK_SIZE + x]))
-			row.append(0)
-		board_array.append(row)
+			#	row.append([])
+			row.append(false)
+		candidate_array.append(row)
 		

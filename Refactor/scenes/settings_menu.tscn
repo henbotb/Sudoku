@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blmnss33r7uw2"]
 
-[ext_resource type="Script" uid="uid://bqh1ypv0h0ck7" path="res://Refactor/settings_menu.gd" id="1_5a856"]
+[ext_resource type="Script" uid="uid://bqh1ypv0h0ck7" path="res://Refactor/scripts/settings_menu.gd" id="1_5a856"]
 [ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/default.tres" id="3_b4jr2"]
 
 [node name="Settings" type="Control" unique_id=1967479882]

@@ -26,10 +26,11 @@ func _on_resume_game_button_pressed() -> void:
 func _on_new_game_button_pressed() -> void:
 	GameState.in_game = true
 	# TODO: add more elaborate start menu
-	get_tree().change_scene_to_file("res://Refactor/puzzle_view.tscn")
+	SceneLoader.load_scene("res://Refactor/scenes/puzzle_view.tscn")
+	
+	
 	pass # Replace with function body.
 	
-# TODO: change all _input for _gui_input()
 func _input(event: InputEvent):
 	if event.is_action_pressed(&"settings"):
 		toggle_multiplayer_visibility(false)

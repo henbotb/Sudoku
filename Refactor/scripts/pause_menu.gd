@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func copy_code():
 	# TODO: generate code when copy code is clicked or something? 
+	# maybe when the container is opened for the first imte
 	# not sure when the best place to actually do this is
 	# maybe it makes sense to have another button for generating the code in the first place
 	DisplayServer.clipboard_set(code_line_edit.text)
@@ -29,7 +30,7 @@ func display_multiplayer(on: bool):
 
 func confirm_quit():
 	# TODO: some save function of some kind
-	get_tree().change_scene_to_file("res://Refactor/start_menu.tscn")
+	SceneLoader.load_scene("res://Refactor/scenes/start_menu.tscn")
 
 func _input(event: InputEvent):
 	if event.is_action_pressed(&"settings"):

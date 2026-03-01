@@ -21,7 +21,13 @@ extends Control
 
 # TODO: font size / thresholds, gui scale maybe?
 
-var handle_self_input := true
+
+# no idea if this is a good way of doing things
+var handle_self_input := true:
+	get:
+		return handle_self_input
+	set(value):
+		set_process_input(value)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,8 +63,5 @@ func toggle_fullscreen(toggled_on: bool) -> void:
 # maybe test this in a new project
 
 func _input(event):
-	if not handle_self_input:
-		return
-		
 	if event.is_action_pressed(&"settings") and visible:
 		display_settings(false)

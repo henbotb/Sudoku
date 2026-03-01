@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://d30yqy8wiye5i"]
 
-[ext_resource type="Script" uid="uid://bnyff1r2exkmv" path="res://Refactor/start_menu.gd" id="1_sjbdb"]
-[ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/default.tres" id="1_x2faa"]
-[ext_resource type="FontFile" uid="uid://cgp1e0xbo3x8n" path="res://Assets/Fonts/Poppins-Bold.ttf" id="2_f08h7"]
-[ext_resource type="Shader" uid="uid://8rmrr6mh67ra" path="res://Shaders/Blur.gdshader" id="3_sjbdb"]
-[ext_resource type="PackedScene" uid="uid://blmnss33r7uw2" path="res://Refactor/settings_menu.tscn" id="5_l3vcq"]
+[ext_resource type="Script" uid="uid://bnyff1r2exkmv" path="res://Refactor/scripts/start_menu.gd" id="1_bwyd4"]
+[ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/default.tres" id="2_yr8ux"]
+[ext_resource type="FontFile" uid="uid://cgp1e0xbo3x8n" path="res://Assets/Fonts/Poppins-Bold.ttf" id="3_rp0pw"]
+[ext_resource type="Shader" uid="uid://8rmrr6mh67ra" path="res://Shaders/Blur.gdshader" id="4_r66qc"]
+[ext_resource type="PackedScene" uid="uid://blmnss33r7uw2" path="res://Refactor/scenes/settings_menu.tscn" id="5_kbw71"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l3vcq"]
-shader = ExtResource("3_sjbdb")
+shader = ExtResource("4_r66qc")
 shader_parameter/blur_amount = 1.5
 
 [node name="StartMenu" type="Control" unique_id=448957499]
@@ -17,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_sjbdb")
+script = ExtResource("1_bwyd4")
 
 [node name="BackgroundRect" type="ColorRect" parent="." unique_id=1759286130]
 layout_mode = 1
@@ -45,28 +45,28 @@ theme_override_constants/separation = 12
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=1350174621]
 layout_mode = 2
-theme = ExtResource("1_x2faa")
+theme = ExtResource("2_yr8ux")
 text = "New Game"
 
 [node name="ResumeGameButton" type="Button" parent="VBoxContainer" unique_id=678621163]
 layout_mode = 2
-theme = ExtResource("1_x2faa")
+theme = ExtResource("2_yr8ux")
 disabled = true
 text = "Resume Game"
 
 [node name="MultiplayerButton" type="Button" parent="VBoxContainer" unique_id=400728497]
 layout_mode = 2
-theme = ExtResource("1_x2faa")
+theme = ExtResource("2_yr8ux")
 text = "Join Multiplayer"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=2093368313]
 layout_mode = 2
-theme = ExtResource("1_x2faa")
+theme = ExtResource("2_yr8ux")
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1305840168]
 layout_mode = 2
-theme = ExtResource("1_x2faa")
+theme = ExtResource("2_yr8ux")
 text = "Quit"
 
 [node name="TitleLabel" type="Label" parent="." unique_id=1116790288]
@@ -82,7 +82,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.827451, 0.49411765, 0.4745098, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("2_f08h7")
+theme_override_fonts/font = ExtResource("3_rp0pw")
 theme_override_font_sizes/font_size = 208
 text = "Godoku"
 
@@ -96,7 +96,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Settings" parent="." unique_id=1967479882 instance=ExtResource("5_l3vcq")]
+[node name="Settings" parent="." unique_id=1967479882 instance=ExtResource("5_kbw71")]
 visible = false
 layout_mode = 1
 
@@ -110,7 +110,9 @@ offset_left = 366.0
 offset_top = 56.0
 offset_right = -368.0
 offset_bottom = -112.0
-theme = ExtResource("1_x2faa")
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yr8ux")
 
 [node name="MarginContainer" type="MarginContainer" parent="MultiplayerPanel" unique_id=1361396481]
 layout_mode = 1
