@@ -1,8 +1,6 @@
 class_name BoardResource
 extends Resource
 
-signal board_loaded
-
 # TESTING: remove exports
 @export var NUM_COLS := 0
 @export var NUM_ROWS := 0
@@ -38,10 +36,7 @@ func _init(board_cols: int, board_rows: int, big_cols: int, big_rows: int) -> vo
 	NUM_COLUMNS_PER_BLOCK = NUM_COLS / NUM_BLOCK_COLS
 	NUM_ROWS_PER_BLOCK = NUM_ROWS / NUM_BLOCK_ROWS
 	NUM_CELLS_PER_BLOCK = NUM_COLUMNS_PER_BLOCK * NUM_ROWS_PER_BLOCK
-
-func _ready() -> void:
-	# since the read-in is done once here, this is where 
-	# the string (2d/1d array format) -> big/small index format will happen
+	
 	for y in range(NUM_ROWS):
 		var row: Array[int] = []
 		for x in range(NUM_COLS):
@@ -50,8 +45,3 @@ func _ready() -> void:
 			#	row.append(-1 * int(string[y * BLOCK_SIZE + x]))
 			row.append(0)
 		board_array.append(row)
-		
-	board_loaded.emit()
-		
-	
-		

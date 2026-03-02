@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://ceg2ys6ghalka"]
 
 [ext_resource type="Script" uid="uid://bgse4ifyidkof" path="res://Refactor/scripts/puzzle_view.gd" id="1_w0304"]
+[ext_resource type="Shader" uid="uid://8rmrr6mh67ra" path="res://Shaders/Blur.gdshader" id="2_hqm3o"]
 [ext_resource type="PackedScene" uid="uid://dhyaupkgxqpy0" path="res://Refactor/scenes/pause_menu.tscn" id="2_yp3t0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjpfy"]
+shader = ExtResource("2_hqm3o")
+shader_parameter/blur_amount = 1.5
 
 [node name="PuzzleView" type="Control" unique_id=284140510]
 layout_mode = 3
@@ -21,14 +26,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer" unique_id=654759933]
+[node name="Board" type="GridContainer" parent="AspectRatioContainer" unique_id=654759933]
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1237826217]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+visible = false
+material = SubResource("ShaderMaterial_gjpfy")
+layout_mode = 0
+offset_left = 252.0
+offset_right = 900.0
+offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.5689727, 0.56897277, 0.5689727, 1)

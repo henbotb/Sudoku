@@ -27,8 +27,7 @@ func _init(board_cols: int, board_rows: int, big_cols: int, big_rows: int) -> vo
 	NUM_COLUMNS_PER_BLOCK = NUM_COLS / NUM_BLOCK_COLS
 	NUM_ROWS_PER_BLOCK = NUM_ROWS / NUM_BLOCK_ROWS
 	NUM_CELLS_PER_BLOCK = NUM_COLUMNS_PER_BLOCK * NUM_ROWS_PER_BLOCK
-	
-func _ready() -> void:
+
 	for y in range(NUM_ROWS):
 		var row: Array[bool] = []
 		for x in range(NUM_COLS):
@@ -37,5 +36,5 @@ func _ready() -> void:
 			#	row.append([])
 			row.append(false)
 		candidate_array.append(row)
-		
 	candidates_loaded.emit()
+	

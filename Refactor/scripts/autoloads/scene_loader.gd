@@ -58,7 +58,6 @@ func _process(_delta: float) -> void:
 				SceneType.Puzzle:
 					scene_instance.board = scene_data["board"]
 					scene_instance.candidates = scene_data["candidates"]
-					scene_instance.initialize_board_data()
 					
 			get_tree().change_scene_to_node(scene_instance)
 			

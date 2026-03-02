@@ -31,7 +31,8 @@ func _on_new_game_button_pressed() -> void:
 		{
 			"board": BoardResource.new(9, 9, 3, 3), 
 			"candidates": CandidateResource.new(9, 9, 3, 3),
-		})
+		}
+	)
 			
 			
 			
