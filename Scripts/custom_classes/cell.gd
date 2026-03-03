@@ -4,12 +4,11 @@ class_name Cell
 var value: int:
 	set(_value):
 		if _value == 0:
-			print("intializing locked values")
 			text = ""
 		else:
 			text = get_display_value(abs(_value))
 			if _value < 0:
-				add_theme_color_override("font_color", Color.DARK_SLATE_GRAY)
+				add_theme_color_override("font_color", Color.DARK_GRAY)
 		value = _value
 
 var pos: Vector2i
@@ -42,8 +41,8 @@ func render():
 func highlight():
 		theme = Settings.HIGHLIGHTED
 		add_to_group("highlighted")
-		
-		
+
+
 func unhighlight():
 	theme = null
 	remove_from_group("highlighted")

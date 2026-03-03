@@ -6,6 +6,9 @@ var candidates: CandidateResource
 var selected_cell: Cell = null
 var selected_cell_pos: Vector2i = Vector2i.ZERO
 
+@onready var pause_menu: Control = $PauseMenu
+@onready var settings_menu: Control = $PauseMenu/Settings
+
 @onready var board_visual: GridContainer = $AspectRatioContainer/Board
 
 func _initialize_board_data() -> void:
@@ -26,9 +29,8 @@ func _initialize_board_data() -> void:
 
 
 func _ready() -> void:
+	settings_menu.highlighting_updated.connect(highlight)
 	_initialize_board_data()
-
-#SELECTED.get_stylebox("normal", "Button").bg_color = Settings.highlight_color
 
 func _cell_pressed(cell: Cell) -> void:
 	selected_cell = cell
@@ -36,6 +38,15 @@ func _cell_pressed(cell: Cell) -> void:
 
 func highlight():
 	reset_highlights()
+	
+	if (
+		selected_cell == null or
+		(
+			selected_cell.value == 0 and
+			not Settings.highlight_empty_cells
+		)
+	):
+		return
 	
 	selected_cell.theme = Settings.HIGHLIGHTED
 	selected_cell.add_to_group("highlighted")

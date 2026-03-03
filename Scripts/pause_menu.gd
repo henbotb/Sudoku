@@ -19,14 +19,17 @@ func copy_code():
 func toggle_code_displayed():
 	code_line_edit.secret = not code_line_edit.secret
 
-func display_pause_menu(on: bool):
-	visible = on
 
-func display_confirm_quit(on: bool):
-	confirm_quit_panel.visible = on
-	
-func display_multiplayer(on: bool):
-	multiplayer_panel.visible = on
+func _set_window_visibility(_window: String, _visible: bool):
+	match(_window):
+		"resume":
+			visible = _visible
+		"settings":
+			settings.display_settings(_visible)
+		"host":
+			multiplayer_panel.visible = _visible
+		"quit":
+			confirm_quit_panel.visible = _visible
 
 func confirm_quit():
 	# TODO: some save function of some kind
@@ -39,15 +42,15 @@ func _input(event: InputEvent):
 	if event.is_action_pressed(&"settings"):
 		
 		if not visible:
-			display_pause_menu(true)
+			visible = true
 			return
 		
 		if confirm_quit_panel.visible or multiplayer_panel.visible or settings.visible:
-			display_confirm_quit(false)
-			display_multiplayer(false)
+			_set_window_visibility("quit", false)
 			settings.display_settings(false)
+			_set_window_visibility("host", false)
 			return
 
 		if visible:
-			display_pause_menu(false)
+			visible = false
 			return

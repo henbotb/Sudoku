@@ -17,6 +17,7 @@ extends Control
 @onready var highlight_all_check_box: CheckBox = $SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer/HighlightAllCheckBox
 @onready var color_picker_button: ColorPickerButton = $SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer/HBoxContainer/ColorPickerButton
 
+
 # TODO: font size / thresholds, gui scale maybe?
 
 # TODO: make more comprehensive "window order" settings,
@@ -27,11 +28,13 @@ extends Control
 
 
 # no idea if this is a good way of doing things
-var handle_self_input := true:
+var handle_self_input: bool =  true:
 	get:
 		return handle_self_input
 	set(value):
 		set_process_input(value)
+
+signal highlighting_updated
 
 
 # Called when the node enters the scene tree for the first time.
@@ -68,9 +71,9 @@ func load_settings() -> void:
 
 
 func display_settings(on: bool) -> void:
-	visible = on
-	if not on:
+	if not on: # trying to set to false
 		Settings.save()
+	visible = on
 
 
 func _update_slider_percentage(value: float, slider: Range) -> void:
@@ -85,7 +88,6 @@ func _update_slider_percentage(value: float, slider: Range) -> void:
 			
 	slider_label.text = str(roundi(value * 66.67))
 
-
 func _save_slide_percentage(value_changed: bool, slider: Slider) -> void:
 	if not value_changed:
 		return
@@ -97,6 +99,23 @@ func _save_slide_percentage(value_changed: bool, slider: Slider) -> void:
 			Settings.music_percentage = slider.value
 		"EffectSlider":
 			Settings.effect_percentage = slider.value
+
+
+func _check_box_updated(box: BaseButton) -> void:
+	match(box.name):
+		"HighlightBlockCheckBox":
+			Settings.highlight_block = box.button_pressed	
+		"HighlightOrthogonalCheckBox":
+			Settings.highlight_orthogonal = box.button_pressed
+		"HighlightSameValueCheckBox":
+			Settings.highlight_same_value = box.button_pressed
+		"HighlightEmptyCellsCheckBox":
+			Settings.highlight_empty_cells = box.button_pressed
+		"HighlightAllCheckBox":
+			Settings.highlight_all = box.button_pressed
+	
+	print("emitting")
+	highlighting_updated.emit()
 
 
 func toggle_fullscreen(toggled_on: bool) -> void:		

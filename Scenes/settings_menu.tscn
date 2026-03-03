@@ -161,7 +161,7 @@ text = "Highlighting"
 
 [node name="HighlightBlockCheckBox" type="CheckBox" parent="SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer" unique_id=365784525]
 layout_mode = 2
-text = "Highlight house when cell selected"
+text = "Highlight block when cell selected"
 
 [node name="HighlightOrthogonalCheckBox" type="CheckBox" parent="SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer" unique_id=1811087179]
 layout_mode = 2
@@ -216,4 +216,9 @@ theme_override_constants/margin_bottom = 8
 [connection signal="value_changed" from="SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/MusicVolumeHBox/MusicSlider" to="." method="_update_slider_percentage" flags=18]
 [connection signal="drag_ended" from="SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/EffectVolumeHBox/EffectSlider" to="." method="_save_slide_percentage" flags=18]
 [connection signal="value_changed" from="SettingTabContainer/DisplayAndAudioTabBar/MarginContainer/VBoxContainer/EffectVolumeHBox/EffectSlider" to="." method="_update_slider_percentage" flags=18]
+[connection signal="pressed" from="SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer/HighlightBlockCheckBox" to="." method="_check_box_updated" flags=18]
+[connection signal="pressed" from="SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer/HighlightOrthogonalCheckBox" to="." method="_check_box_updated" flags=18]
+[connection signal="pressed" from="SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer/HighlightSameValueCheckBox" to="." method="_check_box_updated" flags=18]
+[connection signal="pressed" from="SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer/HighlightEmptyCellsCheckBox" to="." method="_check_box_updated" flags=18]
+[connection signal="pressed" from="SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer/HighlightAllCheckBox" to="." method="_check_box_updated" flags=18]
 [connection signal="color_changed" from="SettingTabContainer/BoardTabBar/MarginContainer/VBoxContainer/HBoxContainer/ColorPickerButton" to="." method="_update_color"]
