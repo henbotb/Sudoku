@@ -2,7 +2,6 @@ extends GridContainer
 class_name Candidates
 
 var candidate_values: Array[bool] = []
-var num_candidates: int
 
 static var cols: int
 static var block_size: int
@@ -43,7 +42,7 @@ func initialize_candidates(_candidate_values: Array[bool] = []):
 		add_child(candidate_label)
 		
 func toggle_candidate(value: int):
-	if value < 1 or value > num_candidates:
+	if value < 1 or value > block_size:
 		return
 		
 	if candidate_values[value - 1]:

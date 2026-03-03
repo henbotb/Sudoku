@@ -1,13 +1,7 @@
 # TODO: move to resource
+# i don't think we need this anymore
 
 extends Node
 
-enum MarkingMode {
-	ADD,
-	CELL_CANDIDATE,
-	BLOCK_CANDIDATE,
-	COLOR,
-}
 
-var marking_mode = MarkingMode.ADD
 var in_game = false

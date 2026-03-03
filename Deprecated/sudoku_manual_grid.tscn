@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3j1twvcbn8o4"]
+[gd_scene format=3 uid="uid://b3j1twvcbn8o4"]
 
 [ext_resource type="Theme" uid="uid://dqqaua4my3ejj" path="res://Themes/default.tres" id="1_kdip4"]
 
@@ -18,7 +18,7 @@ border_width_bottom = 1
 GridContainer/styles/normal = SubResource("StyleBoxFlat_kdip4")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ufesn")
 
-[node name="SudokuManualGrid" type="Control"]
+[node name="SudokuManualGrid" type="Control" unique_id=1459520274]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +28,7 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=431157709]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,21 +41,21 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="GridContainer2" type="GridContainer" parent="GridContainer"]
+[node name="GridContainer2" type="GridContainer" parent="GridContainer" unique_id=1869940638]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_kdip4")
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer/GridContainer2"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer2" unique_id=215427110]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_kdip4")
 autowrap_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="GridContainer/GridContainer2/Button"]
+[node name="GridContainer" type="GridContainer" parent="GridContainer/GridContainer2/Button" unique_id=1400573355]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,70 +66,70 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 3
 
-[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Label" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer" unique_id=1671053976]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="Label2" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Label2" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer" unique_id=850866171]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="Label3" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Label3" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer" unique_id=110286071]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="Label4" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Label4" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer" unique_id=1647875790]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="Label5" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Label5" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer" unique_id=103268265]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="Label6" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Label6" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer" unique_id=1622946897]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="Label7" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Label7" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer" unique_id=1480571221]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="Label8" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Label8" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer" unique_id=1973902552]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="Label9" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer"]
+[node name="Label9" type="Label" parent="GridContainer/GridContainer2/Button/GridContainer" unique_id=1574382359]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="Button2" type="Button" parent="GridContainer/GridContainer2"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer2" unique_id=2090722612]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -137,7 +137,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="GridContainer/GridContainer2"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer2" unique_id=1282705827]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -145,7 +145,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="GridContainer/GridContainer2"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer2" unique_id=604839764]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -153,7 +153,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button5" type="Button" parent="GridContainer/GridContainer2"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer2" unique_id=2078033136]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -161,7 +161,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button6" type="Button" parent="GridContainer/GridContainer2"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer2" unique_id=1261605874]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -169,7 +169,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button7" type="Button" parent="GridContainer/GridContainer2"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer2" unique_id=533716639]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -177,7 +177,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button8" type="Button" parent="GridContainer/GridContainer2"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer2" unique_id=275630420]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -185,7 +185,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button9" type="Button" parent="GridContainer/GridContainer2"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer2" unique_id=475637348]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -193,13 +193,13 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="GridContainer3" type="GridContainer" parent="GridContainer"]
+[node name="GridContainer3" type="GridContainer" parent="GridContainer" unique_id=725783370]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer/GridContainer3"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer3" unique_id=1956450422]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -207,7 +207,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button2" type="Button" parent="GridContainer/GridContainer3"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer3" unique_id=2144179072]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -215,7 +215,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="GridContainer/GridContainer3"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer3" unique_id=1694443447]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -223,7 +223,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="GridContainer/GridContainer3"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer3" unique_id=663343790]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -231,7 +231,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button5" type="Button" parent="GridContainer/GridContainer3"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer3" unique_id=1436117194]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -239,7 +239,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button6" type="Button" parent="GridContainer/GridContainer3"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer3" unique_id=691675616]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -247,7 +247,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button7" type="Button" parent="GridContainer/GridContainer3"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer3" unique_id=2100929144]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -255,7 +255,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button8" type="Button" parent="GridContainer/GridContainer3"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer3" unique_id=472800381]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -263,7 +263,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button9" type="Button" parent="GridContainer/GridContainer3"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer3" unique_id=987242741]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -271,13 +271,13 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="GridContainer4" type="GridContainer" parent="GridContainer"]
+[node name="GridContainer4" type="GridContainer" parent="GridContainer" unique_id=1929587781]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer/GridContainer4"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer4" unique_id=861232321]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -285,7 +285,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button2" type="Button" parent="GridContainer/GridContainer4"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer4" unique_id=541886751]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -293,7 +293,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="GridContainer/GridContainer4"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer4" unique_id=1098413662]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -301,7 +301,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="GridContainer/GridContainer4"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer4" unique_id=286808407]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -309,7 +309,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button5" type="Button" parent="GridContainer/GridContainer4"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer4" unique_id=1483437906]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -317,7 +317,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button6" type="Button" parent="GridContainer/GridContainer4"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer4" unique_id=1795284774]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -325,7 +325,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button7" type="Button" parent="GridContainer/GridContainer4"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer4" unique_id=1743069800]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -333,7 +333,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button8" type="Button" parent="GridContainer/GridContainer4"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer4" unique_id=1069021169]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -341,7 +341,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button9" type="Button" parent="GridContainer/GridContainer4"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer4" unique_id=1222102178]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -349,13 +349,13 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="GridContainer5" type="GridContainer" parent="GridContainer"]
+[node name="GridContainer5" type="GridContainer" parent="GridContainer" unique_id=1153638741]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer/GridContainer5"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer5" unique_id=1209483319]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -363,7 +363,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button2" type="Button" parent="GridContainer/GridContainer5"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer5" unique_id=427664554]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -371,7 +371,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="GridContainer/GridContainer5"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer5" unique_id=519067698]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -379,7 +379,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="GridContainer/GridContainer5"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer5" unique_id=131214095]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -387,7 +387,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button5" type="Button" parent="GridContainer/GridContainer5"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer5" unique_id=87649246]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -395,7 +395,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button6" type="Button" parent="GridContainer/GridContainer5"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer5" unique_id=1353254395]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -403,7 +403,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button7" type="Button" parent="GridContainer/GridContainer5"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer5" unique_id=367587016]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -411,7 +411,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button8" type="Button" parent="GridContainer/GridContainer5"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer5" unique_id=1714391860]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -419,7 +419,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button9" type="Button" parent="GridContainer/GridContainer5"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer5" unique_id=1199719587]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -427,13 +427,13 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="GridContainer6" type="GridContainer" parent="GridContainer"]
+[node name="GridContainer6" type="GridContainer" parent="GridContainer" unique_id=388608244]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer/GridContainer6"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer6" unique_id=1682025756]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -441,7 +441,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button2" type="Button" parent="GridContainer/GridContainer6"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer6" unique_id=1191708299]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -449,7 +449,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="GridContainer/GridContainer6"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer6" unique_id=154971299]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -457,7 +457,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="GridContainer/GridContainer6"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer6" unique_id=1757219189]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -465,7 +465,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button5" type="Button" parent="GridContainer/GridContainer6"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer6" unique_id=114221567]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -473,7 +473,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button6" type="Button" parent="GridContainer/GridContainer6"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer6" unique_id=572256894]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -481,7 +481,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button7" type="Button" parent="GridContainer/GridContainer6"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer6" unique_id=2124449072]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -489,7 +489,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button8" type="Button" parent="GridContainer/GridContainer6"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer6" unique_id=601540985]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -497,7 +497,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button9" type="Button" parent="GridContainer/GridContainer6"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer6" unique_id=1747061835]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -505,13 +505,13 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="GridContainer7" type="GridContainer" parent="GridContainer"]
+[node name="GridContainer7" type="GridContainer" parent="GridContainer" unique_id=863188394]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer/GridContainer7"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer7" unique_id=1127058085]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -519,7 +519,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button2" type="Button" parent="GridContainer/GridContainer7"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer7" unique_id=466982523]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -527,7 +527,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="GridContainer/GridContainer7"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer7" unique_id=420418989]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -535,7 +535,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="GridContainer/GridContainer7"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer7" unique_id=604778497]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -543,7 +543,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button5" type="Button" parent="GridContainer/GridContainer7"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer7" unique_id=1974803366]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -551,7 +551,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button6" type="Button" parent="GridContainer/GridContainer7"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer7" unique_id=1821168304]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -559,7 +559,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button7" type="Button" parent="GridContainer/GridContainer7"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer7" unique_id=1632750248]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -567,7 +567,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button8" type="Button" parent="GridContainer/GridContainer7"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer7" unique_id=2012770397]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -575,7 +575,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button9" type="Button" parent="GridContainer/GridContainer7"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer7" unique_id=486012280]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -583,13 +583,13 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="GridContainer8" type="GridContainer" parent="GridContainer"]
+[node name="GridContainer8" type="GridContainer" parent="GridContainer" unique_id=2121696212]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer/GridContainer8"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer8" unique_id=653818135]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -597,7 +597,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button2" type="Button" parent="GridContainer/GridContainer8"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer8" unique_id=116559922]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -605,7 +605,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="GridContainer/GridContainer8"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer8" unique_id=1733776459]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -613,7 +613,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="GridContainer/GridContainer8"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer8" unique_id=1373525709]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -621,7 +621,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button5" type="Button" parent="GridContainer/GridContainer8"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer8" unique_id=1993921793]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -629,7 +629,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button6" type="Button" parent="GridContainer/GridContainer8"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer8" unique_id=97399378]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -637,7 +637,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button7" type="Button" parent="GridContainer/GridContainer8"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer8" unique_id=471208872]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -645,7 +645,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button8" type="Button" parent="GridContainer/GridContainer8"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer8" unique_id=358188922]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -653,7 +653,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button9" type="Button" parent="GridContainer/GridContainer8"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer8" unique_id=1742409678]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -661,13 +661,13 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="GridContainer9" type="GridContainer" parent="GridContainer"]
+[node name="GridContainer9" type="GridContainer" parent="GridContainer" unique_id=1103404888]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer/GridContainer9"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer9" unique_id=1329770565]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -675,7 +675,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button2" type="Button" parent="GridContainer/GridContainer9"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer9" unique_id=1433426459]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -683,7 +683,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="GridContainer/GridContainer9"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer9" unique_id=1914960600]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -691,7 +691,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="GridContainer/GridContainer9"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer9" unique_id=110672625]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -699,7 +699,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button5" type="Button" parent="GridContainer/GridContainer9"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer9" unique_id=462216109]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -707,7 +707,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button6" type="Button" parent="GridContainer/GridContainer9"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer9" unique_id=1379062073]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -715,7 +715,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button7" type="Button" parent="GridContainer/GridContainer9"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer9" unique_id=1202061415]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -723,7 +723,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button8" type="Button" parent="GridContainer/GridContainer9"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer9" unique_id=84854893]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -731,7 +731,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button9" type="Button" parent="GridContainer/GridContainer9"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer9" unique_id=1401250689]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -739,14 +739,14 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="GridContainer10" type="GridContainer" parent="GridContainer"]
+[node name="GridContainer10" type="GridContainer" parent="GridContainer" unique_id=55592225]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_wfm3x")
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer/GridContainer10"]
+[node name="Button" type="Button" parent="GridContainer/GridContainer10" unique_id=618608123]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -754,7 +754,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button2" type="Button" parent="GridContainer/GridContainer10"]
+[node name="Button2" type="Button" parent="GridContainer/GridContainer10" unique_id=837333326]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -762,7 +762,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button3" type="Button" parent="GridContainer/GridContainer10"]
+[node name="Button3" type="Button" parent="GridContainer/GridContainer10" unique_id=1269006368]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -770,7 +770,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button4" type="Button" parent="GridContainer/GridContainer10"]
+[node name="Button4" type="Button" parent="GridContainer/GridContainer10" unique_id=1648777635]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -778,7 +778,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button5" type="Button" parent="GridContainer/GridContainer10"]
+[node name="Button5" type="Button" parent="GridContainer/GridContainer10" unique_id=1768506217]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -786,7 +786,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button6" type="Button" parent="GridContainer/GridContainer10"]
+[node name="Button6" type="Button" parent="GridContainer/GridContainer10" unique_id=1364077135]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -794,7 +794,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button7" type="Button" parent="GridContainer/GridContainer10"]
+[node name="Button7" type="Button" parent="GridContainer/GridContainer10" unique_id=1578833416]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -802,7 +802,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button8" type="Button" parent="GridContainer/GridContainer10"]
+[node name="Button8" type="Button" parent="GridContainer/GridContainer10" unique_id=446091408]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -810,7 +810,7 @@ theme = ExtResource("1_kdip4")
 text = "1"
 autowrap_mode = 2
 
-[node name="Button9" type="Button" parent="GridContainer/GridContainer10"]
+[node name="Button9" type="Button" parent="GridContainer/GridContainer10" unique_id=1062442050]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

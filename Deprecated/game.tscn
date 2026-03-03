@@ -1,8 +1,7 @@
-[gd_scene format=3 uid="uid://crki050dtr1sx"]
+[gd_scene format=3 uid="uid://4e358o2uh30m"]
 
 [ext_resource type="Script" uid="uid://bqh1ypv0h0ck7" path="res://Scripts/settings_menu.gd" id="1_xstb6"]
 [ext_resource type="PackedScene" uid="uid://ei00tr1235gg" path="res://Scenes/Multiplayer/multiplayer_connect.tscn" id="2_26dl8"]
-[ext_resource type="Script" uid="uid://gqicysb8c852" path="res://Deprecated/board.gd" id="3_18hbe"]
 [ext_resource type="Shader" uid="uid://8rmrr6mh67ra" path="res://Shaders/Blur.gdshader" id="4_ytddg"]
 [ext_resource type="PackedScene" uid="uid://blmnss33r7uw2" path="res://Scenes/settings_menu.tscn" id="5_so7mi"]
 [ext_resource type="Script" uid="uid://c8hcih5vutry8" path="res://Scripts/multiplayer/multiplayer_spawner.gd" id="6_mnwis"]
@@ -37,7 +36,6 @@ offset_right = 318.0
 offset_bottom = 318.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_18hbe")
 metadata/_custom_type_script = "uid://gqicysb8c852"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1840567983]
@@ -49,10 +47,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MissingNode" parent="." unique_id=442085523]
-visible = false
-layout_mode = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1769981007]
 _spawnable_scenes = PackedStringArray("uid://c82y7kwaq4umc")

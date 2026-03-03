@@ -25,8 +25,8 @@ func _init(_pos: Vector2i, _value := 0):
 		
 	add_to_group("value_%d" % abs(_value))
 	add_to_group("cell")
+	
 	candidates = Candidates.new()
-
 	add_child(candidates)
 
 

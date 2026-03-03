@@ -1,14 +1,21 @@
 extends Control
 
+enum MarkingMode {
+	ADD,
+	CELL_CANDIDATE,
+	BLOCK_CANDIDATE,
+	COLOR,
+}
+
 var board: BoardResource
 var candidates: CandidateResource
 
+var marking_mode: MarkingMode = MarkingMode.ADD
 var selected_cell: Cell = null
 var selected_cell_pos: Vector2i = Vector2i.ZERO
 
 @onready var pause_menu: Control = $PauseMenu
 @onready var settings_menu: Control = $PauseMenu/Settings
-
 @onready var board_visual: GridContainer = $AspectRatioContainer/Board
 
 func _initialize_board_data() -> void:
@@ -127,6 +134,46 @@ func highlight_all(_cell: Button):
 		highlight_block(cell)
 
 
+func _input(event):
+	if event.is_action_pressed("toggle_candidate_marking"):
+		if marking_mode == MarkingMode.CELL_CANDIDATE:
+			marking_mode = MarkingMode.ADD
+		else:
+			marking_mode = MarkingMode.CELL_CANDIDATE
+		return
+
+	if event is InputEventKey and event.pressed:
+		if selected_cell == null:
+			print("null cell")
+			return
+
+		if selected_cell.value < 0:
+			print("selected value is locked (<0)")
+			return
+
+		if event.is_action_pressed("delete") or event.is_action_pressed("backspace"):
+			if selected_cell.value != 0:
+				selected_cell.value = 0
+
+		var in_numeric_range = KEY_1 <= event.keycode and event.keycode <= KEY_9
+		var in_alphabetic_range = KEY_A <= event.keycode and event.keycode < KEY_A - 9 + board.NUM_CELLS_PER_BLOCK
+
+		if (
+			in_numeric_range or 
+			in_alphabetic_range
+			):
+			print("Reaching input event")
+			if marking_mode == MarkingMode.CELL_CANDIDATE:
+				print("Reaching mark cell candidate")
+				selected_cell.candidates.toggle_candidate(event.keycode - KEY_0 if in_numeric_range else KEY_A + 10)
+			else:
+				print("Reaching mark cell")
+				selected_cell.value = event.keycode - (KEY_0 if in_numeric_range else KEY_A + 10)
+
+		selected_cell.render()
+		highlight()
+
+
 func _generate_block() -> GridContainer:
 	var block_new = GridContainer.new()
 	block_new.add_to_group("block")
@@ -134,6 +181,7 @@ func _generate_block() -> GridContainer:
 	block_new.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	block_new.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	return block_new
+
 
 func _get_row(pos: Vector2i) -> Array[Cell]:
 	var row: Array[Cell] = []
