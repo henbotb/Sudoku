@@ -182,10 +182,111 @@ text = "Show"
 layout_mode = 2
 text = "Paste"
 
-[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[node name="NewGamePanel" type="Panel" parent="." unique_id=113175838]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 366.0
+offset_top = 56.0
+offset_right = -368.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yr8ux")
+
+[node name="MarginContainer" type="MarginContainer" parent="NewGamePanel" unique_id=66015641]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NewGamePanel/MarginContainer" unique_id=1368711195]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="NewGamePanel/MarginContainer/VBoxContainer2" unique_id=730096223]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "New Game"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="NewGamePanel/MarginContainer/VBoxContainer2" unique_id=1208536085]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=882062911]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Choose Difficulty"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=1929502664]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="DifficultySelectButton" type="OptionButton" parent="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=684028893]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+selected = 0
+item_count = 4
+popup/item_0/text = "Easy"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+popup/item_3/text = "Impossible"
+popup/item_3/id = 3
+
+[node name="JoinGameButton" type="Button" parent="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=1996619740]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create"
+
+[node name="Label2" type="Label" parent="NewGamePanel/MarginContainer/VBoxContainer2" unique_id=1354350705]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "OR"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGamePanel/MarginContainer/VBoxContainer2" unique_id=1542124176]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=789500725]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Enter Board Code"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1568551140]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BoardCodeLineEdit" type="LineEdit" parent="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1057829757]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+placeholder_text = "Enter code"
+virtual_keyboard_enabled = false
+
+[node name="EnterCodeButton" type="Button" parent="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1980318747]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create"
+
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_toggle_new_game_visibility" binds= [true]]
 [connection signal="pressed" from="VBoxContainer/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MultiplayerButton" to="." method="toggle_multiplayer_visibility" binds= [true]]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="Settings" method="display_settings" binds= [true]]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/ShowCodeButton" to="." method="toggle_code_visibility"]
 [connection signal="pressed" from="MultiplayerPanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/PasteCodeButton" to="." method="paste_code"]
+[connection signal="pressed" from="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer/JoinGameButton" to="." method="_load_new_game_difficulty"]
+[connection signal="pressed" from="NewGamePanel/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer/EnterCodeButton" to="." method="_load_new_game_code"]

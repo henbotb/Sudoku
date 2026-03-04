@@ -110,13 +110,13 @@ func highlight_block(_cell: Cell):
 	for cell in _cell.get_parent().get_children():
 		cell.theme = Settings.HIGHLIGHTED
 		cell.add_to_group("highlighted")
+		
 	
 func highlight_same_value(_cell: Cell):
 	get_tree().call_group("value_%s" % abs(_cell.value), "highlight")
 	
+	
 func highlight_candidates(_cell: Cell):
-	# TODO: surely rework this at some point
-	# TODO: test if this even works once input is working
 	var _candidates: Array[Node] = get_tree().get_nodes_in_group("candidate_%d" % abs(_cell.value))
 	for candidate in _candidates:
 		if candidate.text == "":
