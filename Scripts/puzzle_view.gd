@@ -16,7 +16,8 @@ var selected_cell_pos: Vector2i = Vector2i.ZERO
 
 @onready var pause_menu: Control = $PauseMenu
 @onready var settings_menu: Control = $PauseMenu/Settings
-@onready var board_visual: GridContainer = $AspectRatioContainer/Board
+@onready var board_visual: GridContainer = $MarginContainer/HBoxContainer/AspectRatioContainer/Board
+@onready var candidate_mark_button: CheckButton = $MarginContainer/HBoxContainer/VBoxContainer/CandidateMarkButton
 
 func _initialize_board_data() -> void:
 	
@@ -140,10 +141,7 @@ func highlight_all(_cell: Button):
 
 func _input(event):
 	if event.is_action_pressed("toggle_candidate_marking"):
-		if marking_mode == MarkingMode.CELL_CANDIDATE:
-			marking_mode = MarkingMode.ADD
-		else:
-			marking_mode = MarkingMode.CELL_CANDIDATE
+		_toggle_candidate_marking()
 		return
 
 	if event is InputEventKey and event.pressed:
@@ -200,6 +198,12 @@ func _get_column(pos: Vector2i) -> Array[Cell]:
 
 	return column
 
+func _toggle_candidate_marking():
+	if marking_mode == MarkingMode.CELL_CANDIDATE:
+		marking_mode = MarkingMode.ADD
+	else:
+		marking_mode = MarkingMode.CELL_CANDIDATE
+	candidate_mark_button.button_pressed = not candidate_mark_button.button_pressed
 
 # convert from string to this format
 func _2d_to_block_index(cell_ndx: Vector2i) -> Vector2i:
