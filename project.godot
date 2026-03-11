@@ -21,7 +21,6 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 Settings="*res://Scripts/autoloads/settings.gd"
-GameState="*uid://c4bxbxoc76whq"
 SceneLoader="*uid://238ku6txusiu"
 
 [display]

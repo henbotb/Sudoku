@@ -13,9 +13,8 @@ func _ready() -> void:
 	
 	add_to_group("candidates")
 
-	# maybe migrate candidates to cells ?
+
 func initialize_candidates(_candidate_values: Array[bool] = []):
-	
 	var filled_already: bool = false
 	if _candidate_values != []:
 		candidate_values = _candidate_values
@@ -40,6 +39,7 @@ func initialize_candidates(_candidate_values: Array[bool] = []):
 		candidate_label.add_to_group("candidate_%d" % (candidate_index + 1))
 		
 		add_child(candidate_label)
+
 
 func toggle_candidate(value: int):
 	if value < 1 or value > block_size:

@@ -9,6 +9,7 @@ extends Control
 func _ready() -> void:
 	settings.handle_self_input = false
 
+
 func copy_code():
 	# TODO: generate code when copy code is clicked or something? 
 	# maybe when the container is opened for the first imte
@@ -19,6 +20,7 @@ func copy_code():
 	# Maybe store one as the shift counterpart: 3 -> #, 5 -> %
 	
 	DisplayServer.clipboard_set(code_line_edit.text)
+
 
 func toggle_code_displayed():
 	code_line_edit.secret = not code_line_edit.secret
@@ -44,6 +46,7 @@ func confirm_quit():
 		)
 		
 	settings.handle_self_input = true
+
 
 func _input(event: InputEvent):
 	if event.is_action_pressed(&"settings"):

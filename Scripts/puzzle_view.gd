@@ -19,8 +19,19 @@ var selected_cell_pos: Vector2i = Vector2i.ZERO
 @onready var board_visual: GridContainer = $MarginContainer/HBoxContainer/AspectRatioContainer/Board
 @onready var candidate_mark_button: CheckButton = $MarginContainer/HBoxContainer/VBoxContainer/CandidateMarkButton
 
+# TESTING {
+func debug_print(cell: Cell):
+	if Settings.debug_mode:
+		print(cell.get_groups())
+# TESTING }
+
+
+func _ready() -> void:
+	settings_menu.highlighting_updated.connect(highlight)
+	_initialize_board_data()
+
+
 func _initialize_board_data() -> void:
-	
 	board_visual.columns = board.NUM_BLOCK_COLS
 	Candidates.cols = board.NUM_COLUMNS_PER_BLOCK
 	Candidates.block_size = board.NUM_CELLS_PER_BLOCK
@@ -38,15 +49,6 @@ func _initialize_board_data() -> void:
 			block.add_child(cell)
 			
 		board_visual.add_child(block)
-
-
-func _ready() -> void:
-	settings_menu.highlighting_updated.connect(highlight)
-	_initialize_board_data()
-
-func debug_print(cell: Cell):
-	if Settings.debug_mode:
-		print(cell.get_groups())
 
 
 func _cell_pressed(cell: Cell) -> void:
@@ -93,7 +95,7 @@ func highlight():
 	# all highlight lines for all numbers of the same type
 	if Settings.highlight_all:
 		highlight_all(selected_cell)
-	
+
 
 func reset_highlights():
 	get_tree().call_group("highlighted", "unhighlight")
@@ -107,7 +109,6 @@ func highlight_orthogonal(cell: Cell):
 		_cell.highlight()
 
 
-# maybe name all parameter variables "_thing"
 func highlight_block(_cell: Cell):
 	for cell in _cell.get_parent().get_children():
 		cell.theme = Settings.HIGHLIGHTED
@@ -116,17 +117,17 @@ func highlight_block(_cell: Cell):
 
 func highlight_same_value(_cell: Cell):
 	get_tree().call_group("value_%s" % abs(_cell.value), "highlight")
-	
-	
+
+
 func highlight_candidates(_cell: Cell):
 	var _candidates: Array[Node] = get_tree().get_nodes_in_group("candidate_%d" % abs(_cell.value))
 	for candidate in _candidates:
 		if candidate.text == "":
 			continue
 		
-		# TODO: do this as well because this is bad
+		# TODO: rework this because this is bad practice and just messy code
 		if candidate.get_parent().get_parent().is_in_group("highlighted"):
-			candidate.add_theme_color_override("font_color", Color.BLANCHED_ALMOND)
+			candidate.add_theme_color_override("font_color", Color.BLACK)
 		else:
 			candidate.add_theme_color_override("font_color", Settings.highlight_color)
 		candidate.add_to_group("highlighted_candidates")
@@ -141,7 +142,7 @@ func highlight_all(_cell: Button):
 
 func _input(event):
 	if event.is_action_pressed("toggle_candidate_marking"):
-		_toggle_candidate_marking()
+		candidate_mark_button.button_pressed = true
 		return
 
 	if event is InputEventKey and event.pressed:
@@ -189,6 +190,7 @@ func _get_row(pos: Vector2i) -> Array[Cell]:
 			
 	return row
 
+
 func _get_column(pos: Vector2i) -> Array[Cell]:
 	var column: Array[Cell] = []
 	
@@ -198,16 +200,9 @@ func _get_column(pos: Vector2i) -> Array[Cell]:
 
 	return column
 
-func _toggle_candidate_marking():
-	if marking_mode == MarkingMode.CELL_CANDIDATE:
-		marking_mode = MarkingMode.ADD
-	else:
-		marking_mode = MarkingMode.CELL_CANDIDATE
-	candidate_mark_button.button_pressed = not candidate_mark_button.button_pressed
 
-# convert from string to this format
-func _2d_to_block_index(cell_ndx: Vector2i) -> Vector2i:
-	return Vector2i(cell_ndx.y, cell_ndx.x)
-	
-func _block_to_2d_index(cell_ndx: Vector2i) -> Vector2i:
-	return Vector2i(cell_ndx.y, cell_ndx.x)
+func _set_candidate_marking(on: bool):
+	if on:
+		marking_mode = MarkingMode.CELL_CANDIDATE
+	else:
+		marking_mode = MarkingMode.ADD

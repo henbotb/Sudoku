@@ -10,9 +10,9 @@ var fullscreen: bool:
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
-# TESTING:
+# TESTING {
 var debug_mode: bool = false
-
+# TESTING }
 
 var master_percentage: float
 var music_percentage: float
@@ -31,7 +31,7 @@ var highlight_color: Color:
 		HIGHLIGHTED.get_stylebox("normal", "Button").bg_color = value
 		highlight_color = value
 
-# KEYBIND SETTINSG
+# KEYBIND SETTINGS
 
 # settings that don't rely on the menu
 const HIGHLIGHTED = preload("uid://be5h05f4havy0")
@@ -40,9 +40,10 @@ const HIGHLIGHTED = preload("uid://be5h05f4havy0")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-	# TODO: delete these lines, resets config for testing purpose
+	# TESTING {
 	#var dir = DirAccess.open("user://")
 	#dir.remove("game_settings.cfg")
+	# TESTING }
 	
 	if config.load("user://game_settings.cfg") != OK:
 		printerr("User didn't have a game_settings.cfg")
@@ -90,7 +91,8 @@ func save():
 	# KEYBIND SETTINGS
 
 	config.save("user://game_settings.cfg")
-	
+
+
 func _notifications(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save()

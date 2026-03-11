@@ -66,4 +66,4 @@ color = Color(0.5689727, 0.56897277, 0.5689727, 1)
 [node name="PauseMenu" parent="." unique_id=2128226187 instance=ExtResource("2_yp3t0")]
 layout_mode = 1
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/CandidateMarkButton" to="." method="_toggle_candidate_marking"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/CandidateMarkButton" to="." method="_set_candidate_marking"]

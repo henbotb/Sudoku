@@ -1,12 +1,11 @@
 class_name BoardResource
 extends Resource
 
-# TESTING: remove exports
-@export var NUM_COLS := 0
-@export var NUM_ROWS := 0
-@export var NUM_BLOCK_COLS := 0
-@export var NUM_BLOCK_ROWS := 0
-@export var BOARD_STRING := ""
+var NUM_COLS := 0
+var NUM_ROWS := 0
+var NUM_BLOCK_COLS := 0
+var NUM_BLOCK_ROWS := 0
+var BOARD_STRING := ""
 var NUM_CELLS := 0
 var NUM_BLOCKS := 0
 var NUM_COLUMNS_PER_BLOCK := 0
@@ -14,6 +13,7 @@ var NUM_ROWS_PER_BLOCK := 0
 var NUM_CELLS_PER_BLOCK := 0
 
 var board_array: Array = []
+
 
 func _init(board_cols: int, board_rows: int, big_cols: int, big_rows: int, _board_array: Array) -> void:
 	NUM_COLS = board_cols

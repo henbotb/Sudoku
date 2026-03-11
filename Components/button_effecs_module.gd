@@ -11,22 +11,26 @@ class_name ButtonEffectsModule
 
 var tween: Tween
 
+
 func _ready() -> void:
 	button.mouse_entered.connect(_on_mouse_hovered.bind(true))
 	button.mouse_exited.connect(_on_mouse_hovered.bind(false))
 	button.pressed.connect(_on_button_pressed)
 	button.pivot_offset_ratio = Vector2(0.5, 0.5)
-	
+
+
 func _on_button_pressed() -> void:
 	reset_tween()
 	tween.tween_property(button, "scale", scale_amount, anim_duration).from(Vector2(0.8, 0.8))
 	tween.tween_property(button, ^"rotation_degrees", rotation_amount * [-1, 1].pick_random(), anim_duration).from(0)
-	
+
+
 func _on_mouse_hovered(hovered: bool) -> void:
 	reset_tween()
 	tween.tween_property(button, ^"scale", scale_amount if hovered else Vector2.ONE, anim_duration)
 	tween.tween_property(button, ^"rotation_degrees", rotation_amount * [-1, 1].pick_random() if hovered else 0.0, anim_duration)
-	
+
+
 func reset_tween() -> void:
 	if tween:
 		tween.kill()

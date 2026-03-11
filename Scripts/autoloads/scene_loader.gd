@@ -8,7 +8,6 @@ enum SceneType {
 	Menu,
 }
 
-
 signal progress_changed(progress)
 signal load_finished
 
@@ -20,9 +19,11 @@ var scene_data: Dictionary
 var progress: Array = []
 var use_sub_threads: bool = true
 
+
 func _ready() -> void:
 	set_process(false)
-	
+
+
 func load_scene(_scene_path: String, _scene_type: SceneType, _scene_data: Dictionary = {}) -> void:
 	scene_path = _scene_path
 	scene_type = _scene_type
@@ -36,7 +37,8 @@ func load_scene(_scene_path: String, _scene_type: SceneType, _scene_data: Dictio
 	await new_load_screen.loading_screen_ready
 	
 	start_load()
-	
+
+
 func start_load() -> void:
 	var state = ResourceLoader.load_threaded_request(scene_path, "", use_sub_threads)
 	if state == OK:
@@ -67,7 +69,3 @@ func _process(_delta: float) -> void:
 			
 			load_finished.emit()
 			set_process(false)
-	
-	
-	
-	
